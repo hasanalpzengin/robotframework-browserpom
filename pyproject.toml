@@ -4,7 +4,7 @@ version = "0.1.1"
 description = "robotframework-browser library extension to create Page Objects"
 authors = ["Hasan Alp Zengin <hasanalpzengin@gmail.com>"]
 packages = [{ include = "BrowserPOM" }]
-readme = "README.md"
+readme = "readme.md"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
