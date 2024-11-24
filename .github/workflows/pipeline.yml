@@ -28,7 +28,9 @@ jobs:
         pip install poetry
 
     - name: Install project dependencies
-      run: poetry install
+      run: |
+        poetry install
+        poetry run rfbrowser init chromium
 
     - name: Run all checks
       run: make all
