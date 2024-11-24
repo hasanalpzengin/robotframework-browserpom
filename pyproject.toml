@@ -4,6 +4,20 @@ version = "0.1.1"
 description = "robotframework-browser library extension to create Page Objects"
 authors = ["Hasan Alp Zengin <hasanalpzengin@gmail.com>"]
 packages = [{ include = "BrowserPOM" }]
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Framework :: Robot Framework",
+    "Framework :: Robot Framework :: Library",
+    "Framework :: Robot Framework :: Tool",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Quality Assurance"
+]
+repository = "https://github.com/hasanalpzengin/robotframework-browserpom"
+
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -23,24 +37,6 @@ flake8-pyproject = "1.2.3"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[project]
-name = "robotframework-browserpom"
-version = "0.1.1"
-authors = [
-  { name="Hasan Alp Zengin", email="hasalp38@gmail.com" },
-]
-description = "robotframework-browser library extension to create Page Object Model"
-readme = "README.md"
-requires-python = ">=3.12"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
-
-[project.urls]
-Homepage = "https://github.com/hasanalpzengin/robotframework-browserpom"
 
 [tool.black]
 line-length = 88
