@@ -5,7 +5,6 @@ description = "robotframework-browser library extension to create Page Objects"
 authors = ["Hasan Alp Zengin <hasanalpzengin@gmail.com>"]
 packages = [{ include = "BrowserPOM" }]
 readme = "README.md"
-requires-python = ">=3.12"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -14,7 +13,7 @@ classifiers = [
     "Framework :: Robot Framework :: Library",
     "Framework :: Robot Framework :: Tool",
     "Topic :: Software Development :: Testing",
-    "Topic :: Software Development :: Quality Assurance"
+    "Topic :: Software Development :: Quality Assurance",
 ]
 repository = "https://github.com/hasanalpzengin/robotframework-browserpom"
 
