@@ -24,6 +24,24 @@ flake8-pyproject = "1.2.3"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[project]
+name = "robotframework-browserpom"
+version = "0.1.0"
+authors = [
+  { name="Hasan Alp Zengin", email="hasalp38@gmail.com" },
+]
+description = "robotframework-browser library extension to create Page Object Model"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/hasanalpzengin/robotframework-browserpom"
+
 [tool.black]
 line-length = 88
 target-version = ['py312']
