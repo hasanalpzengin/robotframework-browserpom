@@ -10,7 +10,6 @@ venv/
 
 # Poetry files
 .poetry/
-poetry.lock
 
 # Build and distribution directories
 build/
