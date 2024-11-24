@@ -45,4 +45,4 @@ jobs:
         PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
         poetry config pypi-token.pypi $PYPI_PASSWORD
-        poetry publish --build --repository pypi
+        poetry publish
