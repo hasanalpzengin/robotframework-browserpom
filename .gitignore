@@ -1,0 +1,44 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Poetry files
+.poetry/
+poetry.lock
+
+# Build and distribution directories
+build/
+dist/
+*.egg-info/
+
+# Coverage and test output
+.coverage
+coverage.xml
+nosetests.xml
+*.cover
+*.py,cover
+pytest_cache/
+
+# Flake8, Black, and Pylint caches
+.flake8
+.black/
+.isort.cfg
+.pylint.d/
+
+# IDE/editor configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Mac OS system files
+.DS_Store
+
+# Pytest and other test configurations
+*.log

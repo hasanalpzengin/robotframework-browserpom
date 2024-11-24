@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.12.7 on linux)" generated="2024-11-24T14:52:41.835190" rpa="false" schemaversion="5">
+<suite id="s1" name="Bookstore" source="/home/hasalp/Documents/browser-pom/tests/bookstore.robot">
+<kw name="Open Browser" owner="Browser" type="SETUP">
+<msg time="2024-11-24T14:52:41.984746" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+<msg time="2024-11-24T14:52:41.985852" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/home/hasalp/Documents/browser-pom/log/browser/traces/ca83cb77-d004-4d63-86a2-5e73e3113b73"}</msg>
+<msg time="2024-11-24T14:52:41.992768" level="INFO">Starting Browser process /home/hasalp/Documents/browser-pom/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js using port 48565</msg>
+<msg time="2024-11-24T14:52:41.992916" level="INFO">Node startup parameters: ['node', '/home/hasalp/Documents/browser-pom/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js', '48565']</msg>
+<msg time="2024-11-24T14:52:42.626506" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/home/hasalp/Documents/browser-pom/log/browser/traces/ca83cb77-d004-4d63-86a2-5e73e3113b73"}</msg>
+<msg time="2024-11-24T14:52:42.626831" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": true,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  }
+}</msg>
+<msg time="2024-11-24T14:52:42.640474" level="INFO">Successfully created context. </msg>
+<msg time="2024-11-24T14:52:42.640613" level="INFO">{'acceptDownloads': True, 'bypassCSP': True, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1280, 'height': 720}}</msg>
+<msg time="2024-11-24T14:52:43.300934" level="INFO">Successfully initialized new page object and opened url: https://automationbookstore.dev</msg>
+<arg>https://automationbookstore.dev</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Opens a new browser instance. Use this keyword for quick experiments or debugging sessions.</doc>
+<status status="PASS" start="2024-11-24T14:52:41.984096" elapsed="1.317185"/>
+</kw>
+<test id="s1-t1" name="Search" line="9">
+<kw name="Go To Page" owner="BrowserPOM">
+<msg time="2024-11-24T14:52:43.464773" level="INFO">Successfully opened URL https://automationbookstore.dev/index.html</msg>
+<arg>MainPage</arg>
+<tag>page-object</tag>
+<tag>selenium</tag>
+<doc>Go to the url for the given page object.</doc>
+<status status="PASS" start="2024-11-24T14:52:43.310131" elapsed="0.154916"/>
+</kw>
+<kw name="Get Tile Count" owner="MainPage">
+<msg time="2024-11-24T14:52:43.495615" level="INFO">${tileCount} = 8</msg>
+<var>${tileCount}</var>
+<status status="PASS" start="2024-11-24T14:52:43.465300" elapsed="0.030485"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-24T14:52:43.496655" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${tileCount}</arg>
+<arg>8</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-24T14:52:43.496154" elapsed="0.000678"/>
+</kw>
+<status status="PASS" start="2024-11-24T14:52:43.301550" elapsed="0.195488"/>
+</test>
+<status status="PASS" start="2024-11-24T14:52:41.846101" elapsed="1.661934"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Bookstore">Bookstore</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-11-24T14:52:41.984746" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+</errors>
+</robot>

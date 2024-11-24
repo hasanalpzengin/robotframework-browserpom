@@ -1,0 +1,74 @@
+[tool.poetry]
+name = "robotframework-browserpom"
+version = "0.1.0"
+description = "robotframework-browser library extension to create Page Objects"
+authors = ["Hasan Alp Zengin <hasanalpzengin@gmail.com>"]
+packages = [{ include = "BrowserPOM" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+robotframework = "^7.1.0"
+robotframework-browser = "^18.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest_robotframework = "^4.3.0"
+black = "^24.0.0"
+isort = "^5.13.0"
+flake8 = "^7.0.0"
+mypy = "^1.13.0"
+pylint = "^3.3.0"
+coverage = "^7.6.0"
+flake8-pyproject = "1.2.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+skip-string-normalization = false
+
+[tool.isort]
+profile = "black"
+line_length = 100
+include_trailing_comma = true
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = ["E203", "W503", "F401"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    "env"
+]
+
+[tool.mypy]
+python_version = 3.12
+check_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pylint]
+max-line-length = 100
+disable = [
+    "C0103",
+    "C0114"
+]
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "tests/*",
+    "setup.py",
+    "*/__init__.py"
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.pytest.ini_options]
+pythonpath = "."

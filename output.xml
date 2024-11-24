@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.12.7 on linux)" generated="2024-11-24T15:28:30.717626" rpa="false" schemaversion="5">
+<suite id="s1" name="Browser-Pom" source="/home/hasalp/Documents/browser-pom">
+<suite id="s1-s1" name="Tests" source="/home/hasalp/Documents/browser-pom/tests">
+<suite id="s1-s1-s1" name="Bookstore" source="/home/hasalp/Documents/browser-pom/tests/bookstore.robot">
+<kw name="Open Browser" owner="Browser" type="SETUP">
+<msg time="2024-11-24T15:28:30.845741" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+<msg time="2024-11-24T15:28:30.846028" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "browser/traces/2b9576b1-4085-4732-b928-fea6b92b147d"}</msg>
+<msg time="2024-11-24T15:28:30.851931" level="INFO">Starting Browser process /home/hasalp/Documents/browser-pom/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js using port 57825</msg>
+<msg time="2024-11-24T15:28:30.852079" level="INFO">Node startup parameters: ['node', '/home/hasalp/Documents/browser-pom/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js', '57825']</msg>
+<msg time="2024-11-24T15:28:31.344086" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"browser/traces/2b9576b1-4085-4732-b928-fea6b92b147d"}</msg>
+<msg time="2024-11-24T15:28:31.344495" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": true,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "height": 720,
+    "width": 1280
+  }
+}</msg>
+<msg time="2024-11-24T15:28:31.356068" level="INFO">Successfully created context. </msg>
+<msg time="2024-11-24T15:28:31.356163" level="INFO">{'acceptDownloads': True, 'bypassCSP': True, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'height': 720, 'width': 1280}}</msg>
+<msg time="2024-11-24T15:28:32.238476" level="INFO">Successfully initialized new page object and opened url: https://automationbookstore.dev</msg>
+<arg>https://automationbookstore.dev</arg>
+<arg>headless=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Opens a new browser instance. Use this keyword for quick experiments or debugging sessions.</doc>
+<status status="PASS" start="2024-11-24T15:28:30.845268" elapsed="1.393564"/>
+</kw>
+<test id="s1-s1-s1-t1" name="Search" line="9">
+<kw name="Setup" owner="pytest_robotframework._internal.robot.library" type="SETUP">
+<status status="PASS" start="2024-11-24T15:28:32.262057" elapsed="0.000687"/>
+</kw>
+<kw name="Run Test" owner="pytest_robotframework._internal.robot.library">
+<kw name="Go To Page" owner="BrowserPOM">
+<msg time="2024-11-24T15:28:32.421355" level="INFO">Successfully opened URL https://automationbookstore.dev/index.html</msg>
+<arg>MainPage</arg>
+<tag>page-object</tag>
+<tag>selenium</tag>
+<doc>Go to the url for the given page object.</doc>
+<status status="PASS" start="2024-11-24T15:28:32.263600" elapsed="0.157966"/>
+</kw>
+<kw name="Get Tile Count" owner="MainPage">
+<msg time="2024-11-24T15:28:32.457223" level="INFO">${tileCount} = 8</msg>
+<var>${tileCount}</var>
+<status status="PASS" start="2024-11-24T15:28:32.421800" elapsed="0.035488"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-24T15:28:32.457699" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${tileCount}</arg>
+<arg>8</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-24T15:28:32.457478" elapsed="0.000320"/>
+</kw>
+<status status="PASS" start="2024-11-24T15:28:32.262988" elapsed="0.195169"/>
+</kw>
+<kw name="Teardown" owner="pytest_robotframework._internal.robot.library" type="TEARDOWN">
+<status status="PASS" start="2024-11-24T15:28:32.458433" elapsed="0.000402"/>
+</kw>
+<status status="PASS" start="2024-11-24T15:28:32.239170" elapsed="0.219752"/>
+</test>
+<status status="PASS" start="2024-11-24T15:28:30.734247" elapsed="1.732447"/>
+</suite>
+<status status="PASS" start="2024-11-24T15:28:30.733255" elapsed="1.770038"/>
+</suite>
+<status status="PASS" start="2024-11-24T15:28:30.718679" elapsed="1.784824"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Browser-Pom">Browser-Pom</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">Browser-Pom.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Bookstore">Browser-Pom.Tests.Bookstore</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-11-24T15:28:30.845741" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+</errors>
+</robot>

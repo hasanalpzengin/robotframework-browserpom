@@ -1,0 +1,51 @@
+{"level":30,"time":"2024-11-24T14:28:31.126Z","pid":86683,"hostname":"nennee","msg":"Listening on 57825"}
+(node:86683) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":"2024-11-24T14:28:31.173Z","pid":86683,"hostname":"nennee","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2024-11-24T14:28:31.342Z","pid":86683,"hostname":"nennee","msg":"Adding browser to stack: chromium, version: 130.0.6723.31"}
+{"level":30,"time":"2024-11-24T14:28:31.342Z","pid":86683,"hostname":"nennee","msg":"End of node method newBrowser"}
+{"level":30,"time":"2024-11-24T14:28:31.342Z","pid":86683,"hostname":"nennee","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2024-11-24T14:28:31.346Z","pid":86683,"hostname":"nennee","msg":"Start of node method newContext"}
+{"level":30,"time":"2024-11-24T14:28:31.347Z","pid":86683,"hostname":"nennee","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2024-11-24T14:28:31.347Z","pid":86683,"hostname":"nennee","msg":"Trace file: "}
+{"level":30,"time":"2024-11-24T14:28:31.354Z","pid":86683,"hostname":"nennee","msg":"Changed active context"}
+{"level":30,"time":"2024-11-24T14:28:31.354Z","pid":86683,"hostname":"nennee","msg":"End of node method newContext"}
+{"level":30,"time":"2024-11-24T14:28:31.358Z","pid":86683,"hostname":"nennee","msg":"Start of node method newPage"}
+{"level":30,"time":"2024-11-24T14:28:31.358Z","pid":86683,"hostname":"nennee","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2024-11-24T14:28:31.467Z","pid":86683,"hostname":"nennee","msg":"Video path: undefined"}
+{"level":30,"time":"2024-11-24T14:28:31.468Z","pid":86683,"hostname":"nennee","msg":"Changed active page"}
+{"level":30,"time":"2024-11-24T14:28:32.236Z","pid":86683,"hostname":"nennee","msg":"End of node method newPage"}
+{"level":30,"time":"2024-11-24T14:28:32.243Z","pid":86683,"hostname":"nennee","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.260Z","pid":86683,"hostname":"nennee","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.266Z","pid":86683,"hostname":"nennee","msg":"Start of node method goTo"}
+{"level":30,"time":"2024-11-24T14:28:32.420Z","pid":86683,"hostname":"nennee","msg":"End of node method goTo"}
+{"level":30,"time":"2024-11-24T14:28:32.424Z","pid":86683,"hostname":"nennee","msg":"Start of node method getElementCount"}
+{"level":30,"time":"2024-11-24T14:28:32.424Z","pid":86683,"hostname":"nennee","msg":"Strict mode is disabled, return Locator: //li in page."}
+{"level":30,"time":"2024-11-24T14:28:32.455Z","pid":86683,"hostname":"nennee","msg":"End of node method getElementCount"}
+{"level":30,"time":"2024-11-24T14:28:32.464Z","pid":86683,"hostname":"nennee","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.465Z","pid":86683,"hostname":"nennee","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.469Z","pid":86683,"hostname":"nennee","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.470Z","pid":86683,"hostname":"nennee","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.473Z","pid":86683,"hostname":"nennee","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.476Z","pid":86683,"hostname":"nennee","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.479Z","pid":86683,"hostname":"nennee","msg":"Changed active context"}
+{"level":30,"time":"2024-11-24T14:28:32.479Z","pid":86683,"hostname":"nennee","msg":"Changing current active page: page=08e3cd89-6161-4d4b-a2cd-597619646e09"}
+{"level":30,"time":"2024-11-24T14:28:32.479Z","pid":86683,"hostname":"nennee","msg":"Changed active page"}
+{"level":30,"time":"2024-11-24T14:28:32.481Z","pid":86683,"hostname":"nennee","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.482Z","pid":86683,"hostname":"nennee","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.484Z","pid":86683,"hostname":"nennee","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2024-11-24T14:28:32.484Z","pid":86683,"hostname":"nennee","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2024-11-24T14:28:32.486Z","pid":86683,"hostname":"nennee","msg":"Start of node method switchBrowser"}
+{"level":30,"time":"2024-11-24T14:28:32.486Z","pid":86683,"hostname":"nennee","msg":"End of node method switchBrowser"}
+{"level":30,"time":"2024-11-24T14:28:32.487Z","pid":86683,"hostname":"nennee","msg":"Changing current active page: page=08e3cd89-6161-4d4b-a2cd-597619646e09"}
+{"level":30,"time":"2024-11-24T14:28:32.487Z","pid":86683,"hostname":"nennee","msg":"Changed active page"}
+{"level":30,"time":"2024-11-24T14:28:32.490Z","pid":86683,"hostname":"nennee","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.493Z","pid":86683,"hostname":"nennee","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2024-11-24T14:28:32.495Z","pid":86683,"hostname":"nennee","msg":"Changed active context"}
+{"level":30,"time":"2024-11-24T14:28:32.495Z","pid":86683,"hostname":"nennee","msg":"Changing current active page: page=08e3cd89-6161-4d4b-a2cd-597619646e09"}
+{"level":30,"time":"2024-11-24T14:28:32.495Z","pid":86683,"hostname":"nennee","msg":"Changed active page"}
+{"level":30,"time":"2024-11-24T14:28:32.496Z","pid":86683,"hostname":"nennee","msg":"Start of node method closeContext"}
+{"level":30,"time":"2024-11-24T14:28:32.501Z","pid":86683,"hostname":"nennee","msg":"Removed page=9ecedb8b-84dc-4121-b36d-41beac0d6965 from context=aaf5ea75-0c92-4265-8ed8-354718a50d49 page stack"}
+{"level":30,"time":"2024-11-24T14:28:32.501Z","pid":86683,"hostname":"nennee","msg":"End of node method closeContext"}
+{"level":30,"time":"2024-11-24T14:28:32.518Z","pid":86683,"hostname":"nennee","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2024-11-24T14:28:32.551Z","pid":86683,"hostname":"nennee","msg":"End of node method closeAllBrowsers"}
