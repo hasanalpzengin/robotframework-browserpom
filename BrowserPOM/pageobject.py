@@ -28,6 +28,7 @@ class PageObject(metaclass=ABCMeta):
         self.logger = robot.api.logger
         self.locator = LocatorMap(getattr(self, "_locators", {}))
         self.builtin = BuiltIn()
+        self.builtin.set_local_variable(f"${self.__class__.__name__}", self.locator)
 
     @property
     def browser(self) -> Browser:
