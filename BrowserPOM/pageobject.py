@@ -4,10 +4,9 @@ from abc import ABCMeta
 
 import robot.api
 from Browser import Browser
-from robot.libraries.BuiltIn import BuiltIn
+from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
 
 from .locatormap import LocatorMap  # type: ignore[attr-defined]
-
 
 class PageObject(metaclass=ABCMeta):
     """Base class for page objects
@@ -25,10 +24,16 @@ class PageObject(metaclass=ABCMeta):
     PAGE_TITLE: str = ""
 
     def __init__(self):
+        super()
         self.logger = robot.api.logger
         self.locator = LocatorMap(getattr(self, "_locators", {}))
-        self.builtin = BuiltIn()
-        self.builtin.set_local_variable(f"${self.__class__.__name__}", self.locator)
+        # Try to set the suite variable, but handle the case where Robot is not running
+        try:
+            BuiltIn().set_suite_variable(f"${self.__class__.__name__}", self.locator)
+        except RobotNotRunningError:
+            # This block will be executed when libdoc is generating documentation
+            pass
+
 
     @property
     def browser(self) -> Browser:
@@ -36,7 +41,7 @@ class PageObject(metaclass=ABCMeta):
         Returns the browser instance from robotframework-browser library
         Browser library has to be imported in robot file to reference
         """
-        return self.builtin.get_library_instance("Browser")
+        return BuiltIn().get_library_instance("Browser")
 
     def __str__(self):
         return self.__class__.__name__
