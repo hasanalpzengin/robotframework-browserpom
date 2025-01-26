@@ -23,7 +23,7 @@ python = "^3.12"
 robotframework = "^7.1.0"
 robotframework-browser = "^18.0.0"
 
-[poetry.group.dev.dependencies]
+[tool.poetry.group.test.dependencies]
 pytest_robotframework = "^4.3.0"
 black = "^24.0.0"
 isort = "^5.13.0"
