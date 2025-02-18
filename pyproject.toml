@@ -19,9 +19,9 @@ repository = "https://github.com/hasanalpzengin/robotframework-browserpom"
 
 
 [tool.poetry.dependencies]
-python = "^3.12"
-robotframework = "^7.1.0"
-robotframework-browser = "^18.0.0"
+python = ">=3.9,<4.0"
+robotframework = ">=5.1.0"
+robotframework-browser = "*"
 
 [tool.poetry.group.test.dependencies]
 pytest_robotframework = "^4.3.0"
@@ -39,7 +39,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 88
-target-version = ['py312']
+target-version = ['py38', 'py312']
 skip-string-normalization = false
 
 [tool.isort]
