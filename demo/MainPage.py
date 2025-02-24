@@ -18,7 +18,7 @@ class MainPage(PageObject):
     PAGE_TITLE = "MainPage"
     PAGE_URL = "/index.html"
 
-    tile: Tile = ChildObject("//li")
+    tile: Tile = ChildObject("//li", is_list=True)
     search_bar: UIObject = ChildObject("input[@id='searchBar']")
 
     @keyword
