@@ -63,6 +63,7 @@ exclude = [
 python_version = 3.12
 check_untyped_defs = false
 ignore_missing_imports = true
+plugins = ["BrowserPOM.mypy_plugin"]
 
 [tool.pylint]
 max-line-length = 100

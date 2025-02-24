@@ -1,15 +1,14 @@
 from robot.api.deco import keyword
 
+from BrowserPOM.childobject import ChildObject
 from BrowserPOM.pageobject import PageObject
 from BrowserPOM.uiobject import UIObject
 
 
 class Tile(UIObject):
-    def __init__(self, parent: UIObject | None, locator: str) -> None:
-        super().__init__(parent, locator)
-        self.price_label = UIObject(parent=self, locator="//p[2]")
-        self.title = UIObject(parent=self, locator="//h2")
-        self.author = UIObject(parent=self, locator="//p[1]")
+    price_label: UIObject = ChildObject("//p[2]")
+    title: UIObject = ChildObject("//h2")
+    author: UIObject = ChildObject("//p[1]")
 
 
 class MainPage(PageObject):
@@ -19,10 +18,8 @@ class MainPage(PageObject):
     PAGE_TITLE = "MainPage"
     PAGE_URL = "/index.html"
 
-    def __init__(self) -> None:
-        super().__init__()
-        self.tile = Tile(parent=None, locator="//li")
-        self.search_bar = UIObject(parent=None, locator="input[@id='searchBar']")
+    tile: Tile = ChildObject("//li")
+    search_bar: UIObject = ChildObject("input[@id='searchBar']")
 
     @keyword
     def enter_search(self, search):
