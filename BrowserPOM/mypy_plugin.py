@@ -14,9 +14,8 @@ class ChildObjectPlugin(Plugin):
         filtered_type_context = [typ for typ in ctx.api.type_context if typ is not None]
         if filtered_type_context:
             return filtered_type_context[0]
-        else:
-            return ctx.default_return_type
+        return ctx.default_return_type
 
 
-def plugin(version):
+def plugin(version):  # pylint: disable=unused-argument
     return ChildObjectPlugin

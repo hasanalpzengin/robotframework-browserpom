@@ -16,4 +16,3 @@ class ChildObject:
 
     def __set_name__(self, owner, name) -> None:
         self.object_class = get_type_hints(owner)[name]
-        self.name = name
