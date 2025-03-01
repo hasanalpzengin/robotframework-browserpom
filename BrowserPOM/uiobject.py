@@ -9,18 +9,13 @@ class UIObject:
     def __init__(self, parent: UIObject | None, locator: str) -> None:
         self.parent = parent
         self.locator = locator
-        self.index: int | None = None
 
     @property
     def browser(self) -> Browser:
         return BuiltIn().get_library_instance("Browser")
 
     def __getitem__(self, index: int) -> Self:
-        self.index = index
-        return self
+        return self.__class__(parent=self.parent, locator=self.locator + f">> nth={index}")
 
     def __str__(self) -> str:
-        locator = self.locator + f"[{self.index}]" if self.index is not None else self.locator
-        if self.parent:
-            locator = f"{self.parent} >> {locator}"
-        return locator
+        return self.locator if self.parent is None else f"{self.parent} >> {self.locator}"
