@@ -1,4 +1,4 @@
-from typing import get_type_hints, Type
+from typing import Type, get_type_hints
 
 from BrowserPOM.uiobject import UIObject
 

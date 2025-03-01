@@ -1,8 +1,10 @@
 from __future__ import annotations
+
 from typing import Self
 
-from Browser import Browser
 from robot.libraries.BuiltIn import BuiltIn
+
+from Browser import Browser
 
 
 class UIObject:
