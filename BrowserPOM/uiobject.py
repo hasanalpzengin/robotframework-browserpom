@@ -6,10 +6,9 @@ from robot.libraries.BuiltIn import BuiltIn
 
 
 class UIObject:
-    def __init__(self, parent: UIObject | None, locator: str, is_list: bool = False) -> None:
+    def __init__(self, parent: UIObject | None, locator: str) -> None:
         self.parent = parent
         self.locator = locator
-        self.is_list = is_list
         self.index: int | None = None
 
     @property
@@ -17,8 +16,6 @@ class UIObject:
         return BuiltIn().get_library_instance("Browser")
 
     def __getitem__(self, index: int) -> Self:
-        if not self.is_list:
-            raise ValueError("Indexing only available if `is_list` is set!")
         self.index = index
         return self
 
