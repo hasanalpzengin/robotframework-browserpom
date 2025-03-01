@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Self
 
 from Browser import Browser
 from robot.libraries.BuiltIn import BuiltIn
@@ -15,7 +16,7 @@ class UIObject:
     def browser(self) -> Browser:
         return BuiltIn().get_library_instance("Browser")
 
-    def __getitem__(self, index: int) -> UIObject:
+    def __getitem__(self, index: int) -> Self:
         if not self.is_list:
             raise ValueError("Indexing only available if `is_list` is set!")
         self.index = index
