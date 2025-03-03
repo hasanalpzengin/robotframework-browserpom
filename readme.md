@@ -47,11 +47,6 @@ To use robotframework-browserpom, create Page Objects by defining Python classes
 Example:
 
 ```python
-from robot.api.deco import keyword
-
-from BrowserPOM.pageobject import PageObject
-
-
 class MainPage(PageObject):
     """
     main page
@@ -59,23 +54,16 @@ class MainPage(PageObject):
     PAGE_TITLE = "MainPage"
     PAGE_URL = "/index.html"
 
-    _locators = {
-        "tile": {
-            "skeleton": "//li",
-            "price_label": "//li//p[2]",
-            "title": "//li//h2",
-            "author": "//li//p[1]"
-        },
-        "search_bar": "input[@id='searchBar']"
-    }
+    tile: Tile = ChildObject("//li")
+    search_bar: UIObject = ChildObject("//input[@id='searchBar']")
 
     @keyword
     def enter_search(self, search):
         """Enter to search bar"""
-        self.browser.type_text(self.locator.search_bar, search)
+        self.browser.type_text(str(self.search_bar), search)
 
     def get_tile_count(self):
-        return self.browser.get_element_count(self.locator.get("tile").get("skeleton"))
+        return self.browser.get_element_count(str(self.tile))
 ```
 
 Later, calling keywords
@@ -85,6 +73,8 @@ Library   Browser
 Library   BrowserPOM
 Library   demo/MainPage.py   AS  MainPage
 
+Variables   demo/variables.py
+
 Test Setup    Browser.Open Browser    https://automationbookstore.dev     headless=True
 
 *** Test Cases ***
@@ -92,10 +82,16 @@ Search
     Go To Page    MainPage
     ${tileCount}=   MainPage.Get Tile Count
     Should Be Equal As Integers     ${tileCount}    8
-    ${classes}=    Get Classes    ${MainPage.tile.skeleton} >> xpath=../li[1]
+    ${classes}=    Get Classes    ${MainPage.tile[0]}
+    Get Text    ${MainPage.tile[1].title}    ==    Experiences of Test Automation
+    Enter Search    text
     Should Be Equal    ${classes[0]}    ui-li-has-thumb
     Should Be Equal    ${classes[1]}    ui-first-child
 ```
+>
+> TIP:
+> To remove the warnings from your editor create a variables.py file that imports the POM Libraries
+>
 
 ## License
 
