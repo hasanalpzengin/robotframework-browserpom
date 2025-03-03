@@ -39,17 +39,17 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-length = 88
+line-length = 150
 target-version = ['py38', 'py312']
 skip-string-normalization = false
 
 [tool.isort]
 profile = "black"
-line_length = 100
+line_length = 150
 include_trailing_comma = true
 
 [tool.flake8]
-max-line-length = 100
+max-line-length = 150
 extend-ignore = ["E203", "W503", "F401"]
 exclude = [
     ".git",
@@ -67,10 +67,12 @@ ignore_missing_imports = true
 plugins = ["BrowserPOM.mypy_plugin"]
 
 [tool.pylint]
-max-line-length = 100
+max-line-length = 150
 disable = [
     "C0103",
-    "C0114"
+    "C0114",
+    "too-few-public-methods",
+    "no-name-in-module"
 ]
 
 [tool.coverage.run]
