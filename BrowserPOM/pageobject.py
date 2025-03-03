@@ -1,14 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
-from abc import ABCMeta
-
 import robot.api
-from Browser import Browser
 from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
 
-from .locatormap import LocatorMap  # type: ignore[attr-defined]
+from Browser import Browser
 
-class PageObject(metaclass=ABCMeta):
+
+class PageObject:
     """Base class for page objects
 
     Classes that inherit from this class need to define the
@@ -24,16 +22,13 @@ class PageObject(metaclass=ABCMeta):
     PAGE_TITLE: str = ""
 
     def __init__(self):
-        super()
         self.logger = robot.api.logger
-        self.locator = LocatorMap(getattr(self, "_locators", {}))
         # Try to set the suite variable, but handle the case where Robot is not running
         try:
-            BuiltIn().set_suite_variable(f"${self.__class__.__name__}", self.locator)
+            BuiltIn().set_suite_variable(f"${self.__class__.__name__}", self)
         except RobotNotRunningError:
             # This block will be executed when libdoc is generating documentation
             pass
-
 
     @property
     def browser(self) -> Browser:
