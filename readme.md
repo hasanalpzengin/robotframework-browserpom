@@ -54,8 +54,8 @@ class MainPage(PageObject):
     PAGE_TITLE = "MainPage"
     PAGE_URL = "/index.html"
 
-    tile: Tile = ChildObject("//li")
-    search_bar: UIObject = ChildObject("//input[@id='searchBar']")
+    tile = Tile("//li")
+    search_bar: UIObject = UIObject("//input[@id='searchBar']")
 
     @keyword
     def enter_search(self, search):
@@ -64,7 +64,16 @@ class MainPage(PageObject):
 
     def get_tile_count(self):
         return self.browser.get_element_count(str(self.tile))
+
+class Tile(UIObject):
+        def __init__(self, locator: str, parent: UIObject | None = None):
+                super().__init__(locator, parent=parent)
+                self.price = UIObject("//p[contains(@id, '_price')]", parent=self)
+                self.title = UIObject("//h2[contains(@id, '_title')]", parent=self)
+                self.author = UIObject("//p[contains(@id, '_author')]", parent=self)
 ```
+In this example the `parent` parameter is defined as `self` which makes the price, title and author a child of `Tile` POM.
+Converting these UIObjects to the strings will generate a nested selector given as `parent_selector.. >> parent_selector >> child_selector`
 
 Later, calling keywords
 ```robotframework
