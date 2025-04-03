@@ -15,7 +15,7 @@ class UIObject:
         locator (str): The locator string used to identify the UI object.
     """
 
-    def __init__(self, parent: UIObject | None, locator: str) -> None:
+    def __init__(self, locator: str, parent: UIObject | None = None) -> None:
         """
         Initializes a UIObject instance.
 
@@ -46,7 +46,7 @@ class UIObject:
         Returns:
             UIObject: A new UIObject instance representing the indexed child.
         """
-        return self.__class__(parent=self.parent, locator=self.locator + f">> nth={index}")
+        return self.__class__(self.locator + f">> nth={index}", parent=self.parent)
 
     def __str__(self) -> str:
         """
