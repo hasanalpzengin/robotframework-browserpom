@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "robotframework-browserpom"
-version = "0.2.0"
+version = "0.2.1"
 description = "robotframework-browser library extension to create Page Objects"
 authors = ["Hasan Alp Zengin <hasanalpzengin@gmail.com>"]
 packages = [{ include = "BrowserPOM" }]
