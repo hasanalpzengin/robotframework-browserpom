@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Self
+from typing import Self, Union
 
 from Browser import Browser
 from robot.libraries.BuiltIn import BuiltIn
@@ -36,17 +36,33 @@ class UIObject:
         """
         return BuiltIn().get_library_instance("Browser")
 
-    def __getitem__(self, index: int) -> Self:
+    def __getitem__(self, index: Union[int, str]) -> Self:
         """
-        Retrieves an indexed child UI object.
+        Retrieves an indexed or text-based child UI object.
 
         Args:
-            index (int): The index of the child UI object.
+            index (Union[int, str]): The index or text value of the child UI object.
 
         Returns:
-            UIObject: A new UIObject instance representing the indexed child.
+            UIObject: A new UIObject instance representing the indexed or text-based child.
         """
-        return self.__class__(self.locator + f">> nth={index}", parent=self.parent)
+        if isinstance(index, int):
+            # Handle numeric index
+            return self.locator + f">> nth={index}"
+        elif isinstance(index, str):
+            # Handle string index for text
+            return self.locator + f'>> text="{index}"'
+        else:
+            raise TypeError("Index must be an int or a str.")
+
+    def self_locator(self) -> str:
+        """
+        Returns the locator string of the UI object without merging with parent.
+
+        Returns:
+            str: The locator string.
+        """
+        return self.locator
 
     def __str__(self) -> str:
         """
