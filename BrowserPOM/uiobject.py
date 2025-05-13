@@ -49,11 +49,10 @@ class UIObject:
         if isinstance(index, int):
             # Handle numeric index
             return self.locator + f">> nth={index}"
-        elif isinstance(index, str):
+        if isinstance(index, str):
             # Handle string index for text
             return self.locator + f'>> text="{index}"'
-        else:
-            raise TypeError("Index must be an int or a str.")
+        raise TypeError("Index must be an int or a str.")
 
     def self_locator(self) -> str:
         """
