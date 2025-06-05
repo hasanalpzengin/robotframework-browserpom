@@ -5,4 +5,4 @@ from demo.Tile import Tile
 class Content(UIObject):
     def __init__(self, locator: str, parent: UIObject | None = None):
         super().__init__(locator, parent=parent)
-        self.tile = Tile("//li", parent=self)
+        self.tile = Tile("xpath=//li", parent=self)

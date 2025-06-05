@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "robotframework-browserpom"
-version = "0.3.1"
+version = "0.3.2"
 description = "robotframework-browser library extension to create Page Objects"
 authors = ["Hasan Alp Zengin <hasanalpzengin@gmail.com>"]
 packages = [{ include = "BrowserPOM" }]
@@ -32,7 +32,6 @@ mypy = "^1.13.0"
 pylint = "^3.3.0"
 coverage = "^7.6.0"
 flake8-pyproject = "1.2.3"
-robotcode = "0.109.4"
 
 [build-system]
 requires = ["poetry-core"]

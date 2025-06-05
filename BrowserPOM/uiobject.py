@@ -48,10 +48,18 @@ class UIObject:
         """
         if isinstance(index, int):
             # Handle numeric index
-            return self.__class__(self.locator + f">> nth={index}", parent=self.parent)
+            return self.__class__(self.locator + f" >> nth={index}", parent=self.parent)
         if isinstance(index, str):
-            # Handle string index for text
-            return self.__class__(self.locator + f'>> text="{index}"', parent=self.parent)
+            # handle text directly as an appended locator
+            if self.locator.startswith("css"):
+                # If the locator is a CSS selector, we need to ensure it is properly formatted
+                element = f"{self.locator}:has-text('{index}')"
+            elif self.locator.startswith("xpath"):
+                # If the locator is an XPath selector, we need to ensure it is properly formatted
+                element = f"{self.locator}[contains(., '{index}')]"
+            else:
+                raise AttributeError(f"Locator '{self.locator}' must start with 'css=' or 'xpath=' to use text-based indexing.")
+            return self.__class__(element, parent=self.parent)
         raise TypeError("Index must be an int or a str.")
 
     def self_locator(self) -> str:
@@ -70,4 +78,6 @@ class UIObject:
         Returns:
             str: The locator string, including parent locators if applicable.
         """
-        return self.locator if self.parent is None else f"{self.parent} >> {self.locator}"
+        composite_locator = self.locator if self.parent is None else f"{self.parent} >> {self.locator}"
+        print(composite_locator)
+        return composite_locator
