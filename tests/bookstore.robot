@@ -3,7 +3,7 @@ Library   Browser
 Library   BrowserPOM
 Library   demo/MainPage.py   AS  MainPage
 
-Test Setup    Browser.Open Browser    https://automationbookstore.dev     headless=False
+Test Setup    Browser.Open Browser    https://automationbookstore.dev     headless=True
 
 Variables    demo/variables.py
 
