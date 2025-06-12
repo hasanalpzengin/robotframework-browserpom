@@ -3,6 +3,7 @@ from robot.api.deco import keyword
 from BrowserPOM.pageobject import PageObject
 from BrowserPOM.uiobject import UIObject
 from demo.Content import Content
+from demo.SearchBar import SearchBar
 
 
 class MainPage(PageObject):
@@ -14,7 +15,7 @@ class MainPage(PageObject):
     PAGE_URL = "/index.html"
 
     content_area = Content(".ui-content")
-    search_bar = UIObject("//input[@id='searchBar']")
+    search_bar = SearchBar("//input[@id='searchBar']")
 
     @keyword
     def enter_search(self, search):

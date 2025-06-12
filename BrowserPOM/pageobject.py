@@ -29,6 +29,12 @@ class PageObject:
             # This block will be executed when libdoc is generating documentation
             pass
 
+    def run(self, eval_str: str):
+        """
+        Run a string as a Python expression in the context of this page object.
+        """
+        return eval(f"self.{eval_str}")
+
     @property
     def browser(self) -> Browser:
         """
