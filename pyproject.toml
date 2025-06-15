@@ -27,6 +27,9 @@ robotframework-browser = "*"
 pytest_robotframework = "^4.3.0"
 ruff = "^0.11.0"
 
+[tool.poetry.group.dev.dependencies]
+hatchling = "*"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
