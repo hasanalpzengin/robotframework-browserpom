@@ -1,4 +1,6 @@
-from __future__ import absolute_import, unicode_literals
+"""Browser Page Object Model (POM) UIObject class."""
+
+import contextlib
 
 import robot.api
 from Browser import Browser
@@ -20,37 +22,33 @@ class PageObject:
     PAGE_URL: str = ""
     PAGE_TITLE: str = ""
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """Initialize the page object."""
         self.logger = robot.api.logger
-        # Try to set the suite variable, but handle the case where Robot is not running
-        try:
-            BuiltIn().set_suite_variable(f"${self.__class__.__name__}", self)
-        except RobotNotRunningError:
-            # This block will be executed when libdoc is generating documentation
-            pass
+        contextlib.suppress(RobotNotRunningError)
 
-    def run(self, eval_str: str):
-        """
-        Run a string as a Python expression in the context of this page object.
-        """
+        BuiltIn().set_suite_variable(f"${self.__class__.__name__}", self)
+
+    def run(self, eval_str: str) -> object:
+        """Run a string as a Python expression in the context of this page object."""
         return eval(f"self.{eval_str}")
 
     @property
     def browser(self) -> Browser:
-        """
-        Returns the browser instance from robotframework-browser library
+        """Returns the browser instance from robotframework-browser library
         Browser library has to be imported in robot file to reference
         """
         return BuiltIn().get_library_instance("Browser")
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """Return a string representation of the page object."""
         return self.__class__.__name__
 
-    def get_page_name(self):
+    def get_page_name(self) -> str:
         """Return the name of the current page"""
         return self.__class__.__name__
 
-    def _is_current_page(self):
+    def _is_current_page(self) -> bool:
         """Determine if this page object represents the current page.
 
         This works by comparing the current page title to the class
@@ -62,7 +60,6 @@ class PageObject:
         heading or element on the page.
 
         """
-
         actual_title = self.browser.get_title()
         expected_title = self.PAGE_TITLE
 

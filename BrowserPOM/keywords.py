@@ -1,12 +1,14 @@
+"""Browser Page Object Model (POM) UIObject class."""
 from urllib.parse import urlparse
 
 import robot
 from robot.libraries.BuiltIn import BuiltIn
 
+from BrowserPOM.pageobject import PageObject
+
 
 class BrowserPomKeywords:
-    """
-    BrowserPOM Library's generic keywords
+    """BrowserPOM Library's generic keywords
 
     | =Keyword Name=             |
     | Go to page                 |
@@ -15,42 +17,12 @@ class BrowserPomKeywords:
 
     ROBOT_LIBRARY_SCOPE = "TEST SUITE"
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """Initialize the BrowserPOM keywords library."""
         self.builtin = BuiltIn()
         self.logger = robot.api.logger
 
-    def the_current_page_should_be(self, page_name):
-        """Fails if the name of the current page is not the given page name
-
-        ``page_name`` is the name you would use to import the page.
-
-        This keyword will import the given page object, put it at the
-        front of the Robot library search order, then call the method
-        ``_is_current_page`` on the library. The default
-        implementation of this method will compare the page title to
-        the ``PAGE_TITLE`` attribute of the page object, but this
-        implementation can be overridden by each page object.
-
-        """
-
-        page = self._get_page_object(page_name)
-
-        # This causes robot to automatically resolve keyword
-        # conflicts by looking in the current page first.
-        if page._is_current_page():  # pylint: disable=protected-access
-            # only way to get the current order is to set a
-            # new order. Once done, if there actually was an
-            # old order, preserve the old but make sure our
-            # page is at the front of the list
-            old_order = self.builtin.set_library_search_order()
-            new_order = ([str(page)],) + old_order
-            self.builtin.set_library_search_order(new_order)
-            return
-
-        # If we get here, we're not on the page we think we're on
-        raise AssertionError(f"Expected page to be {page_name} but it was not")
-
-    def go_to_page(self, page_name, page_root=None):
+    def go_to_page(self, page_name: str, page_root: str | None = None) -> None:
         """Go to the url for the given page object.
 
         Unless explicitly provided, the URL root will be based on the
@@ -78,7 +50,6 @@ class BrowserPomKeywords:
         Tags: selenium, page-object
 
         """
-
         page = self._get_page_object(page_name)
 
         url = page_root if page_root is not None else page.browser.get_url()
@@ -87,12 +58,11 @@ class BrowserPomKeywords:
 
         page.browser.go_to(url)
 
-    def _get_page_object(self, page_name):
+    def _get_page_object(self, page_name: str) -> PageObject:
         """Import the page object if necessary, then return the handle to the library
 
         Note: If the page object has already been imported, it won't be imported again.
         """
-
         try:
             page = self.builtin.get_library_instance(page_name)
         except RuntimeError:

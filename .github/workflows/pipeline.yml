@@ -34,7 +34,7 @@ jobs:
         poetry run rfbrowser init chromium
 
     - name: Run all checks
-      run: make all
+      run: make validations
 
     - name: Build the package
       run: poetry build

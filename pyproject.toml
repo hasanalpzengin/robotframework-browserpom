@@ -25,17 +25,11 @@ robotframework-browser = "*"
 
 [tool.poetry.group.test.dependencies]
 pytest_robotframework = "^4.3.0"
-black = "^24.0.0"
-isort = "^5.13.0"
-flake8 = "^7.0.0"
-mypy = "^1.13.0"
-pylint = "^3.3.0"
-coverage = "^7.6.0"
-flake8-pyproject = "1.2.3"
+ruff = "^0.11.0"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.black]
 line-length = 150
@@ -87,3 +81,21 @@ skip_covered = true
 
 [tool.pytest.ini_options]
 pythonpath = "."
+
+[tool.ruff]
+line-length = 150
+target-version = "py312"
+select = ["ALL"]
+ignore = ["D205", "N999", "D401", "G004", "D415", "D400", "EM101", "TRY003", "EM102", "S307"]
+fix = true
+unfixable = []
+show-fixes = true
+src = ["BrowserPOM"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    "env"
+]

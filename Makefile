@@ -3,57 +3,23 @@
 # Directories to check, update with your source directories
 SRC=BrowserPOM
 
-# Default target
-.PHONY: all
-all: format lint type-check test
-
-# Format the code using black and isort
 .PHONY: format
 format:
 	@echo "Running code formatters..."
-	poetry run black $(SRC)
-	poetry run isort $(SRC)
+	poetry run ruff format ${SRC}
 
-# Lint the code using flake8 and pylint
-.PHONY: lint
-lint:
-	@echo "Running linters..."
-	poetry run flake8 $(SRC)
-	poetry run pylint $(SRC)
+.PHONY: validations
+validations: check test
 
-# Type-check the code using mypy
-.PHONY: type-check
-type-check:
-	@echo "Running type checks..."
-	poetry run mypy $(SRC)
-
-# Run all checks without modifying files
 .PHONY: check
 check:
-	@echo "Running all checks (no formatting)..."
-	poetry run flake8 $(SRC)
-	poetry run pylint $(SRC)
-	poetry run mypy $(SRC)
-
-# Run test coverage (optional, update with your test command)
-.PHONY: coverage
-coverage:
-	@echo "Running test coverage..."
-	poetry run coverage run -m pytest $(SRC)
-	poetry run coverage report
-
-# Clean temporary and cache files
-.PHONY: clean
-clean:
-	@echo "Cleaning up..."
-	find . -type d -name __pycache__ -exec rm -r {} +
-	find . -type d -name .mypy_cache -exec rm -r {} +
-	find . -type f -name .coverage -delete
+	@echo "Running code linters..."
+	poetry run ruff check ${SRC}
 
 # Run tests
 .PHONY: test
 test:
-	@echo "Running tests..."#
+	@echo "Running tests..."
 	poetry run pytest
 
 # Display help message
