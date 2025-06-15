@@ -1,10 +1,10 @@
-[tool.poetry]
+[project]
 name = "robotframework-browserpom"
 version = "0.3.3"
 description = "robotframework-browser library extension to create Page Objects"
-authors = ["Hasan Alp Zengin <hasanalpzengin@gmail.com>"]
-packages = [{ include = "BrowserPOM" }]
+authors = [{ name = "Hasan Alp Zengin", email = "hasanalpzengin@gmail.com" }]
 readme = "readme.md"
+requires-python = ">=3.9,<4.0"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -15,8 +15,11 @@ classifiers = [
     "Topic :: Software Development :: Testing",
     "Topic :: Software Development :: Quality Assurance",
 ]
+dependencies = [
+    "robotframework>=5.1.0",
+    "robotframework-browser"
+]
 repository = "https://github.com/hasanalpzengin/robotframework-browserpom"
-
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
@@ -29,46 +32,14 @@ ruff = "^0.11.0"
 
 [tool.poetry.group.dev.dependencies]
 hatchling = "*"
+setuptools = "^80.9.0"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.black]
-line-length = 150
-target-version = ['py38', 'py312']
-skip-string-normalization = false
-
-[tool.isort]
-profile = "black"
-line_length = 150
-include_trailing_comma = true
-
-[tool.flake8]
-max-line-length = 150
-extend-ignore = ["E203", "W503", "F401"]
-exclude = [
-    ".git",
-    "__pycache__",
-    "build",
-    "dist",
-    ".venv",
-    "env"
-]
-
-[tool.mypy]
-python_version = 3.12
-check_untyped_defs = false
-ignore_missing_imports = true
-
-[tool.pylint]
-max-line-length = 150
-disable = [
-    "C0103",
-    "C0114",
-    "too-few-public-methods",
-    "no-name-in-module"
-]
+[tool.hatch.build.targets.wheel]
+packages = ["BrowserPOM"]
 
 [tool.coverage.run]
 branch = true
