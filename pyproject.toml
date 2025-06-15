@@ -41,6 +41,9 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["BrowserPOM"]
 
+[tool.poetry]
+packages = [{ include = "BrowserPOM" }]
+
 [tool.coverage.run]
 branch = true
 omit = [
