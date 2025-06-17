@@ -1,20 +1,20 @@
 *** Settings ***
-Library   Browser
 Library   BrowserPOM
 Library   demo/MainPage.py   AS  MainPage
 
-Test Setup    Browser.Open Browser    https://automationbookstore.dev     headless=True
+Test Setup    Open Browser    https://automationbookstore.dev     headless=False
 
 Variables    demo/variables.py
 
 *** Test Cases ***
 Search
-    Go To Page    MainPage
+    MainPage.Go To Page
     ${tileCount}=   MainPage.Get Tile Count
     Should Be Equal As Integers     ${tileCount}    8
     ${classes}=    Get Classes    ${MainPage.content_area.tile[0]}
     Get Text    ${MainPage.content_area.tile[1].title}    ==    Experiences of Test Automation
     Get Text    ${MainPage.content_area.tile["Experiences of Test Automation"].title}    ==    Experiences of Test Automation
+    Get Text    ${MainPage.content_area.tile.filter("hasText: 'Experiences of Test Automation'").title}    ==    Experiences of Test Automation
     Enter Search    text
     MainPage.Run    search_bar.search("This is a search")
     Should Be Equal    ${classes[0]}    ui-li-has-thumb

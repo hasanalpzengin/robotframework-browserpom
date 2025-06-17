@@ -1,9 +1,10 @@
 """Browser Page Object Model (POM) UIObject class."""
+from pathlib import Path
 
-from .keywords import BrowserPomKeywords
+from Browser import Browser
 
 
-class BrowserPOM(BrowserPomKeywords):
+class BrowserPOM(Browser):
     """*PageObjectLibrary* is a lightweight library which supports using
     the page object pattern with
     [https://robotframework-browser.org/|BrowserLibrary].
@@ -101,3 +102,8 @@ class BrowserPOM(BrowserPomKeywords):
     """
 
     ROBOT_LIBRARY_SCOPE = "TEST SUITE"
+
+    def __init__(self) -> None:
+        """Initialize the BrowserPOM library."""
+        addon_path = Path(__file__).parent / "addons" / "playwright_page_method.js"
+        super().__init__(jsextension=str(addon_path))

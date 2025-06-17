@@ -4,11 +4,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Self
 
-if TYPE_CHECKING:
-    from Browser import Browser
-
-
 from robot.libraries.BuiltIn import BuiltIn
+
+if TYPE_CHECKING:
+    from BrowserPOM import BrowserPOM
 
 
 class UIObject:
@@ -32,14 +31,14 @@ class UIObject:
         self.locator = locator
 
     @property
-    def browser(self) -> Browser:
+    def browser(self) -> BrowserPOM:
         """Gets the Browser instance from Robot Framework's BuiltIn library.
 
         Returns:
             Browser: An instance of the Browser library.
 
         """
-        return BuiltIn().get_library_instance("Browser")
+        return BuiltIn().get_library_instance("BrowserPOM")
 
     def __getitem__(self, index: int | str) -> Self:
         """Retrieves an indexed or text-based child UI object.
@@ -56,18 +55,23 @@ class UIObject:
             return self.__class__(self.locator + f" >> nth={index}", parent=self.parent)
         if isinstance(index, str):
             # handle text directly as an appended locator
-            if self.locator.startswith("css"):
-                # If the locator is a CSS selector, we need to ensure it is properly formatted
-                element = f"{self.locator}:has-text('{index}')"
-            elif self.locator.startswith("xpath"):
-                # If the locator is an XPath selector, we need to ensure it is properly formatted
-                element = f"{self.locator}[contains(., '{index}')]"
-            else:
-                raise AttributeError(
-                    f"Locator '{self.locator}' must start with 'css=' or 'xpath=' to use text-based indexing.",
-                )
-            return self.__class__(element, parent=self.parent)
+            return self.filter(f"hasText: '{index}'")
         raise TypeError("Index must be an int or a str.")
+
+    def filter(self, filter_text: str) -> UIObject:
+        """Filters the UI object by a given filter.
+
+        See: https://playwright.dev/docs/locators#filtering-locators for more details
+
+        Args:
+            filter_text: The filter to apply to the UI object.
+
+        Returns:
+            UIObject: A new UIObject instance representing the filtered object.
+
+        """
+        locator = BuiltIn().run_keyword("Playwright Page Method", "locator('" + str(self) + "').filter({" + filter_text + "})")
+        return self.__class__(locator)
 
     def self_locator(self) -> str:
         """Returns the locator string of the UI object without merging with parent.
