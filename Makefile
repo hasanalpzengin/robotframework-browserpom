@@ -6,7 +6,7 @@ SRC=BrowserPOM
 .PHONY: format
 format:
 	@echo "Running code formatters..."
-	poetry run ruff format ${SRC}
+	uv run ruff format ${SRC}
 
 .PHONY: validations
 validations: check test
@@ -14,13 +14,13 @@ validations: check test
 .PHONY: check
 check:
 	@echo "Running code linters..."
-	poetry run ruff check ${SRC}
+	uv run ruff check ${SRC}
 
 # Run tests
 .PHONY: test
 test:
 	@echo "Running tests..."
-	poetry run pytest
+	uv run pytest
 
 # Display help message
 .PHONY: help

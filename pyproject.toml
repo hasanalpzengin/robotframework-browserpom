@@ -1,10 +1,10 @@
 [project]
 name = "robotframework-browserpom"
-version = "0.3.3"
+version = "0.4.0"
 description = "robotframework-browser library extension to create Page Objects"
 authors = [{ name = "Hasan Alp Zengin", email = "hasanalpzengin@gmail.com" }]
-readme = "readme.md"
 requires-python = ">=3.9,<4.0"
+readme = "readme.md"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -17,32 +17,35 @@ classifiers = [
 ]
 dependencies = [
     "robotframework>=5.1.0",
-    "robotframework-browser"
+    "robotframework-browser",
 ]
 repository = "https://github.com/hasanalpzengin/robotframework-browserpom"
 
-[tool.poetry.dependencies]
-python = ">=3.9,<4.0"
-robotframework = ">=5.1.0"
-robotframework-browser = "*"
+[dependency-groups]
+test = [
+    "pytest_robotframework>=4.3.0,<5",
+    "ruff>=0.11.0,<0.12",
+]
+dev = [
+    "hatchling",
+    "setuptools>=80.9.0,<81",
+]
 
-[tool.poetry.group.test.dependencies]
-pytest_robotframework = "^4.3.0"
-ruff = "^0.11.0"
+[tool.uv]
+default-groups = [
+    "test",
+    "dev",
+]
 
-[tool.poetry.group.dev.dependencies]
-hatchling = "*"
-setuptools = "^80.9.0"
+[tool.hatch.build.targets.sdist]
+include = ["BrowserPOM"]
+
+[tool.hatch.build.targets.wheel]
+include = ["BrowserPOM"]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-
-[tool.hatch.build.targets.wheel]
-packages = ["BrowserPOM"]
-
-[tool.poetry]
-packages = [{ include = "BrowserPOM" }]
 
 [tool.coverage.run]
 branch = true
