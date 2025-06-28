@@ -18,12 +18,7 @@ poetry install
 
 ## Development Dependencies
 - pytest
-- black
-- isort
-- flake8
-- mypy
-- pylint
-- coverage
+- ruff
 
 ---
 For more, see the [Contributing](/contributing) section. 
