@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'robotframework-browserpom',
   description: 'Page Object Model extension for Robot Framework Browser',
+  base: '/robotframework-browserpom/',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
