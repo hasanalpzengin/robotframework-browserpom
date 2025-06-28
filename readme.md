@@ -2,6 +2,8 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/robotframework-browserpom.svg)](https://pypi.org/project/robotframework-browserpom/)
 
+📖 **Documentation:** [https://hasanalpzengin.github.io/robotframework-browserpom](https://hasanalpzengin.github.io/robotframework-browserpom)
+
 `robotframework-browserpom` is a [robotframework-browser](https://robotframework-browser.org/) library extension designed to simplify the creation of Page Objects. It provides an easy-to-use interface to define Page Object Models (POM) for browser automation with the Robot Framework, allowing for cleaner, maintainable, and reusable test automation code.
 
 Heavily inspired by [robotframework-pageobjectlibrary](https://github.com/boakley/robotframework-pageobjectlibrary) repository which is built for usage with Selenium Library and not compatible with robotframework-browser.
