@@ -1,6 +1,6 @@
 [project]
 name = "robotframework-browserpom"
-version = "0.4.2"
+version = "0.4.3"
 description = "robotframework-browser library extension to create Page Objects"
 authors = [{ name = "Hasan Alp Zengin", email = "hasanalpzengin@gmail.com" }]
 requires-python = ">=3.9,<4.0"

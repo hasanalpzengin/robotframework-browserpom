@@ -1,8 +1,9 @@
 """Browser Page Object Model (POM) UIObject class."""
+import contextlib
 from pathlib import Path
 
 from Browser import Browser
-from robot.libraries.BuiltIn import BuiltIn
+from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
 
 
 class BrowserPOM(Browser):
@@ -107,5 +108,6 @@ class BrowserPOM(Browser):
     def __init__(self) -> None:
         """Initialize the BrowserPOM library."""
         addon_path = Path(__file__).parent / "addons" / "playwright_page_method.js"
-        BuiltIn().set_library_search_order("BrowserPOM", "Browser")
+        with contextlib.suppress(RobotNotRunningError):
+            BuiltIn().set_library_search_order("BrowserPOM", "Browser")
         super().__init__(jsextension=str(addon_path))
