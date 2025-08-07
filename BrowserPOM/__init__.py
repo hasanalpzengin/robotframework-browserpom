@@ -107,5 +107,5 @@ class BrowserPOM(Browser):
     def __init__(self) -> None:
         """Initialize the BrowserPOM library."""
         addon_path = Path(__file__).parent / "addons" / "playwright_page_method.js"
-        BuiltIn().set_library_search_order(["BrowserPOM", "Browser"])
+        BuiltIn().set_library_search_order("BrowserPOM", "Browser")
         super().__init__(jsextension=str(addon_path))
