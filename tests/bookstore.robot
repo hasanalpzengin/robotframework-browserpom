@@ -20,3 +20,8 @@ Search
     Should Be Equal    ${classes[0]}    ui-li-has-thumb
     Should Be Equal    ${classes[1]}    ui-first-child
     Should Be Equal As Strings    ${MainPage.content_area.tile[1].title}    .ui-content >> xpath=//li >> nth=1 >> //h2[contains(@id, '_title')]
+
+On Error Register
+    Register Keyword To Run On Failure    Take Screenshot
+    MainPage.Go To Page
+    Run Keyword And Expect Error    STARTS: TimeoutError:    MainPage.Fail Keyword

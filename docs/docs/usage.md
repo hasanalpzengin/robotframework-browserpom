@@ -85,7 +85,27 @@ Each UIObject can have a parent, allowing for relative locators and encapsulatio
 The `__str__` method in `UIObject` ensures that when you use a UIObject in a keyword or locator, it automatically resolves to the correct, fully-qualified locator string.
 
 ---
-For more, see the [Examples](/examples) section.
+
+# Error Handling with Decorators
+
+To ensure your Page Object keywords automatically run a keyword (such as taking a screenshot) on failure, decorate them with `on_error_trigger` from `BrowserPOM.decorator`:
+
+```python
+from BrowserPOM.decorator import on_error_trigger
+from robot.api.deco import keyword
+
+class MainPage(PageObject):
+    @keyword
+    @on_error_trigger
+    def fail_keyword(self):
+        text = self.browser.get_text(str(self.error_element))
+```
+
+Then, in your Robot Framework test, use:
+```text
+Register Keyword To Run On Failure    Take Screenshot
+```
+If you use `Take Screenshot`, a full screenshot will be taken automatically when an error occurs in a decorated keyword.
 
 # Shared Page Object Models for Large Organizations
 
@@ -103,4 +123,4 @@ One of the key strengths of `robotframework-browserpom` is its support for scala
 - **Import in Robot Tests:** Teams can import and use these shared POMs in their Robot Framework test suites using the `Library` keyword.
 - **Version Control:** Use semantic versioning and changelogs to manage updates and ensure compatibility across teams.
 
-This approach enables large-scale, collaborative, and maintainable browser automation for enterprise environments. 
+This approach enables large-scale, collaborative, and maintainable browser automation for enterprise environments.

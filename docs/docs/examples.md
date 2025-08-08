@@ -92,4 +92,25 @@ Search
     Should Be Equal As Strings    ${MainPage.content_area.tile[1].title}    .ui-content >> xpath=//li >> nth=1 >> //h2[contains(@id, '_title')]
 ```
 
-For more, see the [Usage](/usage) section. 
+## Error Handling with Decorators
+
+You can use the `on_error_trigger` decorator to enable integration with the `Register Keyword To Run On Failure` keyword of the Browser library. This does not automatically implement error handling by itself, but allows your Page Object keywords to trigger the registered failure keyword (such as taking a screenshot) when an error occurs.
+
+```python
+from BrowserPOM.decorator import on_error_trigger
+from robot.api.deco import keyword
+
+class MainPage(PageObject):
+    @keyword
+    @on_error_trigger
+    def fail_keyword(self):
+        text = self.browser.get_text(str(self.error_element))
+```
+
+In your Robot Framework test, register a keyword to run on failure:
+```text
+Register Keyword To Run On Failure    Take Screenshot
+```
+If you use `Take Screenshot`, a full screenshot will be taken automatically when an error occurs in a decorated keyword.
+
+For more, see the [Usage](/usage) section.
