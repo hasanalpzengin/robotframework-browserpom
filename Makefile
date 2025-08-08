@@ -20,7 +20,7 @@ check:
 .PHONY: test
 test:
 	@echo "Running tests..."
-	uv run pytest
+	uv run robot tests
 
 # Display help message
 .PHONY: help
