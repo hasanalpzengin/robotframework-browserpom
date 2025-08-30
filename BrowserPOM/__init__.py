@@ -1,12 +1,13 @@
 """Browser Page Object Model (POM) UIObject class."""
 
-from .pageobject import PageObject
-from .uiobject import UIObject
 import contextlib
 from pathlib import Path
 
 from Browser import Browser
 from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
+
+from .pageobject import PageObject as PageObject
+from .uiobject import UIObject as UIObject
 
 
 class BrowserPOM(Browser):

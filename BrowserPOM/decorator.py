@@ -6,4 +6,5 @@ def on_error_trigger(method):
         except Exception:
             self.browser.keyword_error("body")
             raise
+
     return wrapper
