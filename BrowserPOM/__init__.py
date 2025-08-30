@@ -1,4 +1,7 @@
 """Browser Page Object Model (POM) UIObject class."""
+
+from .pageobject import PageObject
+from .uiobject import UIObject
 import contextlib
 from pathlib import Path
 

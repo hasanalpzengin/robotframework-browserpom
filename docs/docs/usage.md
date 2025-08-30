@@ -82,7 +82,7 @@ MainPage.Run    search_bar.search("This is a search")
 Each UIObject can have a parent, allowing for relative locators and encapsulation of sub-elements.
 
 ## 7. Locator Composition and Stringification
-The `__str__` method in `UIObject` ensures that when you use a UIObject in a keyword or locator, it automatically resolves to the correct, fully-qualified locator string.
+A `UIObject` instance returns the complete selector of the respective object. To use it with Browser Library keywords in python code, it must be encapsulated in `str()`. The `__str__` method in `UIObject` ensures that when you use a UIObject in a keyword or locator, it automatically resolves to the correct, fully-qualified locator string.
 
 ---
 
