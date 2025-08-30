@@ -6,8 +6,8 @@ from pathlib import Path
 from Browser import Browser
 from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
 
-from .pageobject import PageObject as PageObject
-from .uiobject import UIObject as UIObject
+from .pageobject import PageObject
+from .uiobject import UIObject
 
 
 class BrowserPOM(Browser):
