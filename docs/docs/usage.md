@@ -53,9 +53,9 @@ class Tile(UIObject):
 - **By filter:** `${MainPage.content_area.tile.filter("hasText: 'Experiences of Test Automation'").title}`
 
 ## 3. Chained/Nested Locators
-The string representation of a UIObject automatically builds a full locator chain:
+The string representation of a UIObject automatically builds a full locator chain. Remember to wrap the UIObject in `str()` to get the selector string.
 ```text
-${MainPage.content_area.tile[1].title}  # .ui-content >> xpath=//li >> nth=1 >> //h2[contains(@id, '_title')]
+str(${MainPage.content_area.tile[1].title})  # .ui-content >> xpath=//li >> nth=1 >> //h2[contains(@id, '_title')]
 ```
 
 ## 4. Custom Keywords in POM Classes

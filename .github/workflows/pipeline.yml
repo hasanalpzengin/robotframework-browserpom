@@ -80,7 +80,7 @@ jobs:
 
   validations:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/') || github.event_name == 'pull_request'
+    if: github.event_name == 'push' && github.event_name == 'pull_request'
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3

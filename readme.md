@@ -82,7 +82,6 @@ Converting these UIObjects to the strings will generate a nested selector given 
 Later, calling keywords
 ```robotframework
 *** Settings ***
-Library   Browser
 Library   BrowserPOM
 Library   demo/MainPage.py   AS  MainPage
 

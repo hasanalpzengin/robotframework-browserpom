@@ -4,8 +4,6 @@ Library   demo/MainPage.py   AS  MainPage
 
 Test Setup    Open Browser    https://automationbookstore.dev     headless=True
 
-Variables    demo/variables.py
-
 *** Test Cases ***
 Search
     MainPage.Go To Page

@@ -2,13 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Self
+from typing import Self
 
 from robot.libraries.BuiltIn import BuiltIn
-
-if TYPE_CHECKING:
-    from BrowserPOM import BrowserPOM
-
 
 class UIObject:
     """Represents a UI object in the Browser Page Object Model (POM).
@@ -31,7 +27,7 @@ class UIObject:
         self.locator = locator
 
     @property
-    def browser(self) -> BrowserPOM:
+    def browser(self) -> 'BrowserPOM':
         """Gets the Browser instance from Robot Framework's BuiltIn library.
 
         Returns:
