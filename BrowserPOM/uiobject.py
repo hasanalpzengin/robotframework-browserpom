@@ -6,6 +6,7 @@ from typing import Self
 
 from robot.libraries.BuiltIn import BuiltIn
 
+
 class UIObject:
     """Represents a UI object in the Browser Page Object Model (POM).
 
@@ -27,7 +28,7 @@ class UIObject:
         self.locator = locator
 
     @property
-    def browser(self) -> 'BrowserPOM':
+    def browser(self) -> "BrowserPOM":
         """Gets the Browser instance from Robot Framework's BuiltIn library.
 
         Returns:

@@ -34,7 +34,7 @@ class PageObject:
         return eval(f"self.{eval_str}")
 
     @property
-    def browser(self) -> 'BrowserPOM':
+    def browser(self) -> "BrowserPOM":
         """Returns the browser instance from robotframework-browser library
         Browser library has to be imported in robot file to reference
         """
