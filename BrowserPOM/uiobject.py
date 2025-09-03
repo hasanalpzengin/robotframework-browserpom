@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Self
 from robot.libraries.BuiltIn import BuiltIn
 
 if TYPE_CHECKING:
-    import Browser
+    from Browser import Browser
 
 
 class UIObject:

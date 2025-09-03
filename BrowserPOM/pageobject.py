@@ -3,8 +3,8 @@
 import contextlib
 from urllib.parse import urlparse
 
-import Browser
 import robot.api
+from Browser import Browser
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
 
