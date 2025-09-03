@@ -3,6 +3,7 @@
 import contextlib
 from urllib.parse import urlparse
 
+import Browser
 import robot.api
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
@@ -34,7 +35,7 @@ class PageObject:
         return eval(f"self.{eval_str}")
 
     @property
-    def browser(self) -> "BrowserPOM":
+    def browser(self) -> Browser:
         """Returns the browser instance from robotframework-browser library
         Browser library has to be imported in robot file to reference
         """
