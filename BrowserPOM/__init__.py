@@ -4,7 +4,9 @@ import contextlib
 from pathlib import Path
 
 from Browser import Browser
+from Browser.utils import ScreenshotFileTypes, ScreenshotReturnType
 from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
+from robot.api.deco import keyword
 
 from .pageobject import PageObject
 from .uiobject import UIObject
@@ -115,3 +117,13 @@ class BrowserPOM(Browser):
         with contextlib.suppress(RobotNotRunningError):
             BuiltIn().set_library_search_order("BrowserPOM", "Browser")
         super().__init__(jsextension=str(addon_path))
+
+    @keyword
+    def take_screenshot(self, *args, **kwargs):
+        path = self._browser_control.take_screenshot(*args, **kwargs)
+        try:
+            import allure
+            allure.attach.file(path, name="screenshot", attachment_type=allure.attachment_type.PNG)
+        except ImportError:
+            pass
+        return path
