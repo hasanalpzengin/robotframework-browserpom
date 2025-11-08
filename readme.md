@@ -4,9 +4,10 @@
 
 📖 **Documentation:** [https://hasanalpzengin.github.io/robotframework-browserpom](https://hasanalpzengin.github.io/robotframework-browserpom)
 
-`robotframework-browserpom` is a [robotframework-browser](https://robotframework-browser.org/) library extension designed to simplify the creation of Page Objects. It provides an easy-to-use interface to define Page Object Models (POM) for browser automation with the Robot Framework, allowing for cleaner, maintainable, and reusable test automation code.
-
-Heavily inspired by [robotframework-pageobjectlibrary](https://github.com/boakley/robotframework-pageobjectlibrary) repository which is built for usage with Selenium Library and not compatible with robotframework-browser.
+`robotframework-browserpom` is a small extension for `robotframework-browser` that
+makes it easy to define Page Object Models (POMs) for browser-based Robot
+Framework tests. It provides helpers and conventions for building readable,
+reusable page objects and wiring them into Robot tests.
 
 ## Features
 
@@ -16,45 +17,133 @@ Heavily inspired by [robotframework-pageobjectlibrary](https://github.com/boakle
 
 ## Installation
 
-To install `robotframework-browserpom`, you can use `poetry`:
+To install `robotframework-browserpom` use `poetry`:
 
 ```bash
 poetry add robotframework-browserpom
 ```
 
-Alternatively, to install in development mode (if you are contributing to the library):
+For development / contributing:
 
+```bash
 poetry install
+```
 
-Dependencies
+## Dependencies
 
-This project depends on the following libraries:
+- Python 3.12 or above
+- robotframework (>=7.1.0)
+- robotframework-browser (>=18.0.0)
 
-    Python 3.12 or above
-    robotframework (>=7.1.0)
-    robotframework-browser (>=18.0.0)
+Development dependencies commonly used by contributors:
 
-Development dependencies include:
+- pytest (testing)
+- black (formatting)
+- isort (import sorting)
+- flake8 / pylint (linting)
+- mypy (static type checking)
+- coverage (coverage reports)
 
-    pytest for testing
-    black for code formatting
-    isort for sorting imports
-    flake8 for linting
-    mypy for static type checking
-    pylint for additional linting checks
-    coverage for test coverage reporting
+## Quick usage
 
-Usage
-
-To use robotframework-browserpom, create Page Objects by defining Python classes that represent the pages in your web application. These classes should contain methods that interact with the elements on the page.
-
-Example:
+Create Page Objects as Python classes and use them from Robot Framework tests. Example:
 
 ```python
 class MainPage(PageObject):
-    """
-    main page
-    """
+  PAGE_TITLE = "MainPage"
+  PAGE_URL = "/index.html"
+
+  tile = Tile("//li")
+  search_bar: UIObject = UIObject("//input[@id='searchBar']")
+
+  @keyword
+  def enter_search(self, search):
+    self.browser.type_text(str(self.search_bar), search)
+```
+
+Then import the POM library in Robot tests:
+
+```robot
+*** Settings ***
+Library   BrowserPOM
+Library   demo/MainPage.py   AS  MainPage
+
+Test Setup    Browser.Open Browser    https://automationbookstore.dev     headless=True
+```
+# robotframework-browserpom
+
+[![PyPI version](https://img.shields.io/pypi/v/robotframework-browserpom.svg)](https://pypi.org/project/robotframework-browserpom/)
+
+📖 **Documentation:** [https://hasanalpzengin.github.io/robotframework-browserpom](https://hasanalpzengin.github.io/robotframework-browserpom)
+
+`robotframework-browserpom` is a small extension for `robotframework-browser` that
+makes it easy to define Page Object Models (POMs) for browser-based Robot
+Framework tests. It provides helpers and conventions for building readable,
+reusable page objects and wiring them into Robot tests.
+
+## Editor / linter integration: the variables problem
+
+Many editors and language servers (e.g., RobotCode / Robot Framework IntelliSense)
+warn when variables referenced by Robot Framework tests are not defined. The
+common workaround is to maintain a `variables.py` that imports or defines the
+POM libraries so the IDE recognizes them. Maintaining that file by hand is
+tedious — every time you add a new Page Object module you must update the
+variables file.
+
+To avoid this manual step, `BrowserPOM` ships a tiny utility module that
+statically scans a Python package/folder for Page Object classes and returns
+dummy variable values for them. Because it uses Python's `ast` module no
+project code is executed — it's safe and fast.
+
+## The `pom_stubs` helper
+
+`BrowserPOM.pom_stubs.get_variables(base_path)` will scan `base_path` for
+`.py` modules and return a mapping of class names for classes that inherit
+from `PageObject`. The returned mapping can be used as a Robot variables file
+source (via `robot.toml` or the `--variablefile` CLI option).
+
+Example behavior:
+
+```py
+from BrowserPOM import pom_stubs
+
+# returns something like {"MainPage": "MainPage", "Tile": "Tile"}
+pom_stubs.get_variables("./demo/")
+```
+
+This is intentionally minimal: the actual variable values are irrelevant for
+editor intellisense — they just need to exist so the linter stops complaining.
+
+If you prefer, the helper may be extended to return more information (file
+stems, class attributes, dummy instances, etc.).
+
+## Usage via `robot.toml`
+
+You can register the helper as a variable-file in `robot.toml` so your editor or
+Robot runner picks it up automatically. Example `robot.toml`:
+
+```toml
+variable-files = ["BrowserPOM.pom_stubs:demo/"]
+```
+
+That tells the Robot tools to call `BrowserPOM.pom_stubs.get_variables("demo/")`
+and use the returned mapping as variables for the project. The argument is the
+path to the folder containing your POM modules (relative to the project root).
+
+Alternatively you can pass the helper directly on the Robot CLI:
+
+```bash
+# optional example shown for documentation only
+robot --variablefile BrowserPOM.pom_stubs:demo/ tests/
+```
+
+## Example Page Object
+
+Define your page objects as normal — inherit from `PageObject` and add your
+members and keywords:
+
+```python
+class MainPage(PageObject):
     PAGE_TITLE = "MainPage"
     PAGE_URL = "/index.html"
 
@@ -63,63 +152,27 @@ class MainPage(PageObject):
 
     @keyword
     def enter_search(self, search):
-        """Enter to search bar"""
         self.browser.type_text(str(self.search_bar), search)
 
     def get_tile_count(self):
         return self.browser.get_element_count(str(self.tile))
-
-class Tile(UIObject):
-        def __init__(self, locator: str, parent: UIObject | None = None):
-                super().__init__(locator, parent=parent)
-                self.price = UIObject("//p[contains(@id, '_price')]", parent=self)
-                self.title = UIObject("//h2[contains(@id, '_title')]", parent=self)
-                self.author = UIObject("//p[contains(@id, '_author')]", parent=self)
 ```
-In this example the `parent` parameter is defined as `self` which makes the price, title and author a child of `Tile` POM.
-Converting these UIObjects to the strings will generate a nested selector given as `parent_selector.. >> parent_selector >> child_selector`
 
-Later, calling keywords
-```robotframework
-*** Settings ***
-Library   BrowserPOM
-Library   demo/MainPage.py   AS  MainPage
+## Notes and limitations
 
-Variables   demo/variables.py
+- The helper uses `ast` and does not import or execute any project code.
+- It currently includes classes that inherit from `PageObject` (best-effort
+  detection for dotted or parametrized base expressions).
+- The returned variable values are dummy placeholders intended for editor
+  tooling only. If you need richer stubs (e.g., mapping to file stems or class
+  metadata) we can extend the helper.
 
-Test Setup    Browser.Open Browser    https://automationbookstore.dev     headless=True
+## Contributing
 
-*** Test Cases ***
-Search
-    Go To Page    MainPage
-    ${tileCount}=   MainPage.Get Tile Count
-    Should Be Equal As Integers     ${tileCount}    8
-    ${classes}=    Get Classes    ${MainPage.tile[0]}
-    Get Text    ${MainPage.tile[1].title}    ==    Experiences of Test Automation
-    Enter Search    text
-    Should Be Equal    ${classes[0]}    ui-li-has-thumb
-    Should Be Equal    ${classes[1]}    ui-first-child
-```
->
-> TIP:
-> To remove the warnings from your editor create a variables.py file that imports the POM Libraries
->
+Contributions are welcome; please follow the repository coding guidelines and
+add tests for new behavior.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-Contributing
-
-Contributions are welcome! Please fork this repository and submit a pull request with your changes.
-
-Before submitting your pull request, make sure to:
-
-    Follow the coding style conventions (Black for formatting, Flake8 for linting).
-    Write tests for any new features or bug fixes.
-    Update the documentation as needed.
-
-Contact
-
-For any questions or feedback, you can reach the project maintainer:
-
-    Hasan Alp Zengin (hasanalpzengin@gmail.com)
+This project is licensed under the MIT License - see the LICENSE file for
+details.

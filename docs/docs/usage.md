@@ -28,6 +28,49 @@ Search
     ${tileCount}=   MainPage.Get Tile Count
 ```
 
+## Editor integration: automatic POM variable stubs
+
+Editors and language servers (for example RobotCode) can warn about
+undefined variables referenced in Robot Framework tests. A common workaround is
+to provide a `variables.py` file that imports or defines all POM libraries so
+the IDE recognizes them. Keeping that file in sync with your POM modules is
+tedious.
+
+`BrowserPOM` includes a tiny helper module `BrowserPOM.pom_stubs` which
+statically scans a folder for Python modules containing Page Object classes and
+returns a mapping of class names to placeholder values. Because it uses the
+`ast` module it doesn't import or execute your project code.
+
+Example usage at runtime (Python):
+
+```py
+from BrowserPOM import pom_stubs
+
+# returns something like {"MainPage": "MainPage", "Tile": "Tile"}
+pom_stubs.get_variables("./demo/")
+```
+
+Registering the helper via `robot.toml` is convenient for editor tooling and
+Robot runs. Add a `variable-files` entry, passing the folder that contains your
+POM modules (path is relative to the repository root):
+
+```toml
+variable-files = ["BrowserPOM.pom_stubs:demo/"]
+```
+
+This instructs Robot tools to call `BrowserPOM.pom_stubs.get_variables("demo/")`
+and use the returned mapping as variables for the project. The helper filters
+for classes that inherit `PageObject` (best-effort detection for dotted or
+parametrized base expressions).
+
+Notes:
+
+- Returned values are placeholders intended for editor/linter consumption and
+    do not represent runnable objects.
+- If you need richer metadata (file stems, class attributes, etc.) the helper
+    can be extended; see `BrowserPOM/pom_stubs.py` for the current implementation.
+
+
 ---
 
 # Advanced Usage
