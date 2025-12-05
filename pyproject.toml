@@ -1,6 +1,6 @@
 [project]
 name = "robotframework-browserpom"
-version = "0.4.9"
+version = "0.4.10"
 description = "robotframework-browser library extension to create Page Objects"
 authors = [{ name = "Hasan Alp Zengin", email = "hasanalpzengin@gmail.com" }]
 requires-python = ">=3.9,<4.0"
@@ -23,18 +23,14 @@ repository = "https://github.com/hasanalpzengin/robotframework-browserpom"
 
 [dependency-groups]
 test = [
+    "prek>=0.2.19",
+    "pyrefly>=0.44.1",
     "pytest_robotframework>=4.3.0,<5",
     "ruff>=0.11.0,<0.12",
 ]
 dev = [
     "hatchling",
     "setuptools>=80.9.0,<81",
-]
-
-[tool.uv]
-default-groups = [
-    "test",
-    "dev",
 ]
 
 [tool.hatch.build.targets.sdist]
