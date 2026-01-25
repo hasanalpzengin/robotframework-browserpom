@@ -70,7 +70,11 @@ class UIObject:
             UIObject: A new UIObject instance representing the filtered object.
 
         """
-        locator = BuiltIn().run_keyword("Playwright Page Method", "locator('" + str(self) + "').filter({" + filter_text + "})")
+        base_locator = str(self).replace("'", '"')
+        locator = BuiltIn().run_keyword(
+            "Playwright Page Method",
+            "locator('" + base_locator + "').filter({" + filter_text + "})",
+        )
         return self.__class__(locator)
 
     def self_locator(self) -> str:
