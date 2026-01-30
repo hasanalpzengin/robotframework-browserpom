@@ -29,6 +29,7 @@ test = [
     "ruff>=0.11.0,<0.12",
 ]
 dev = [
+    "allure-robotframework>=2.15.3",
     "hatchling",
     "setuptools>=80.9.0,<81",
 ]
