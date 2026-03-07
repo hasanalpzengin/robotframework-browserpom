@@ -32,7 +32,7 @@ jobs:
           enable-cache: true
       - name: Install project dependencies
         run: |
-          uv sync
+          uv sync --all-groups
           uv run rfbrowser init chromium
       - name: Run Robot tests
         run: uv run robot tests
@@ -88,12 +88,7 @@ jobs:
       uses: astral-sh/setup-uv@v4
       with:
         enable-cache: true
-
-    - name: Install project dependencies
-      run: |
-        uv sync
-        uv run rfbrowser init chromium
-
+        
     - name: Build the package
       run: uv build
 
