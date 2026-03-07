@@ -111,12 +111,25 @@ class BrowserPOM(Browser):
 
     ROBOT_LIBRARY_SCOPE = "TEST SUITE"
 
-    def __init__(self) -> None:
-        """Initialize the BrowserPOM library."""
+    def __init__(self, *args, **kwargs) -> None:
+        """Initialize the BrowserPOM library with playwright page functionality.
+        Optional arguments are passed to the 
+        [https://robotframework-browser.org/|BrowserLibrary] constructor.
+        """
         addon_path = Path(__file__).parent / "addons" / "playwright_page_method.js"
         with contextlib.suppress(RobotNotRunningError):
             BuiltIn().set_library_search_order("BrowserPOM", "Browser")
-        super().__init__(jsextension=str(addon_path))
+
+        jsextensions = kwargs.pop('jsextension', [])
+        if isinstance(jsextensions, str):
+            jsextensions = [extension.strip() for extension in jsextensions.split(',')]
+        elif not isinstance(jsextensions, list):
+            jsextensions = [jsextensions]
+        if str(addon_path) not in jsextensions:
+            jsextensions.insert(0, str(addon_path))
+        kwargs['jsextension'] = jsextensions
+
+        super().__init__(*args, **kwargs)
 
     @keyword
     def take_screenshot(self, *args, **kwargs):  # noqa:ANN002,ANN003,ANN201
