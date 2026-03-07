@@ -19,7 +19,6 @@ jobs:
       - uses: j178/prek-action@v1
   robot-tests:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
