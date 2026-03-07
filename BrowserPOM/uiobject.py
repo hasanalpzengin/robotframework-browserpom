@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Self
+from typing import TYPE_CHECKING, Self, cast
 
 from robot.libraries.BuiltIn import BuiltIn
 
@@ -38,7 +38,7 @@ class UIObject:
             Browser: An instance of the Browser library.
 
         """
-        return BuiltIn().get_library_instance("BrowserPOM")
+        return cast("Browser", BuiltIn().get_library_instance("BrowserPOM"))
 
     def __getitem__(self, index: int | str) -> Self:
         """Retrieves an indexed or text-based child UI object.

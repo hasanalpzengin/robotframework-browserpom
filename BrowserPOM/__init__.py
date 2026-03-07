@@ -1,7 +1,9 @@
 """Browser Page Object Model (POM) UIObject class."""
 
 import contextlib
+import importlib
 from pathlib import Path
+from typing import TYPE_CHECKING, cast
 
 from Browser import Browser
 from Browser.utils import ScreenshotFileTypes, ScreenshotReturnType
@@ -10,6 +12,9 @@ from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
 
 from .pageobject import PageObject
 from .uiobject import UIObject
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 class BrowserPOM(Browser):
@@ -111,25 +116,26 @@ class BrowserPOM(Browser):
 
     ROBOT_LIBRARY_SCOPE = "TEST SUITE"
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args: object, **kwargs: object) -> None:
         """Initialize the BrowserPOM library with playwright page functionality.
-        Optional arguments are passed to the 
+        Optional arguments are passed to the
         [https://robotframework-browser.org/|BrowserLibrary] constructor.
         """
         addon_path = Path(__file__).parent / "addons" / "playwright_page_method.js"
         with contextlib.suppress(RobotNotRunningError):
             BuiltIn().set_library_search_order("BrowserPOM", "Browser")
 
-        jsextensions = kwargs.pop('jsextension', [])
+        jsextensions = kwargs.pop("jsextension", [])
         if isinstance(jsextensions, str):
-            jsextensions = [extension.strip() for extension in jsextensions.split(',')]
+            jsextensions = [extension.strip() for extension in jsextensions.split(",")]
         elif not isinstance(jsextensions, list):
             jsextensions = [jsextensions]
         if str(addon_path) not in jsextensions:
             jsextensions.insert(0, str(addon_path))
-        kwargs['jsextension'] = jsextensions
+        kwargs["jsextension"] = jsextensions
 
-        super().__init__(*args, **kwargs)
+        browser_init = cast("Callable[..., None]", super().__init__)
+        browser_init(*args, **kwargs)
 
     @keyword
     def take_screenshot(self, *args, **kwargs):  # noqa:ANN002,ANN003,ANN201
@@ -138,7 +144,7 @@ class BrowserPOM(Browser):
         """
         path = self._browser_control.take_screenshot(*args, **kwargs)
         try:
-            import allure  # noqa:PLC0415
+            allure = importlib.import_module("allure")
 
             allure.attach.file(
                 path,

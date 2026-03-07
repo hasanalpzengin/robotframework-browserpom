@@ -1,6 +1,7 @@
 """Browser Page Object Model (POM) UIObject class."""
 
 import contextlib
+from typing import cast
 from urllib.parse import urlparse
 
 import robot.api.logger
@@ -39,7 +40,7 @@ class PageObject:
         """Returns the browser instance from robotframework-browser library
         Browser library has to be imported in robot file to reference
         """
-        return BuiltIn().get_library_instance("BrowserPOM")
+        return cast("Browser", BuiltIn().get_library_instance("BrowserPOM"))
 
     def __str__(self) -> str:
         """Return a string representation of the page object."""

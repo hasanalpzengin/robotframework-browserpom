@@ -1,0 +1,9 @@
+{"level":30,"time":"2026-03-07T11:03:00.622Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Listening on 127.0.0.1:58301"}
+(node:36735) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"level":30,"time":"2026-03-07T11:03:00.656Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Start of node method initializeExtension"}
+{"level":30,"time":"2026-03-07T11:03:00.657Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Initializing extension: /home/hasanalp/Documents/local_projects/robotframework-browserpom/BrowserPOM/addons/playwright_page_method.js"}
+{"level":30,"time":"2026-03-07T11:03:00.716Z","pid":36735,"hostname":"fedora.fritz.box","msg":"End of node method initializeExtension"}
+{"level":30,"time":"2026-03-07T11:03:00.715Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Adding 2 keywords from JS Extension"}
+{"level":30,"time":"2026-03-07T11:03:00.822Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2026-03-07T11:03:00.823Z","pid":36735,"hostname":"fedora.fritz.box","msg":"End of node method closeAllBrowsers"}
