@@ -1,9 +1,18 @@
-{"level":30,"time":"2026-03-07T11:03:00.622Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Listening on 127.0.0.1:58301"}
-(node:36735) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-{"level":30,"time":"2026-03-07T11:03:00.656Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Start of node method initializeExtension"}
-{"level":30,"time":"2026-03-07T11:03:00.657Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Initializing extension: /home/hasanalp/Documents/local_projects/robotframework-browserpom/BrowserPOM/addons/playwright_page_method.js"}
-{"level":30,"time":"2026-03-07T11:03:00.716Z","pid":36735,"hostname":"fedora.fritz.box","msg":"End of node method initializeExtension"}
-{"level":30,"time":"2026-03-07T11:03:00.715Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Adding 2 keywords from JS Extension"}
-{"level":30,"time":"2026-03-07T11:03:00.822Z","pid":36735,"hostname":"fedora.fritz.box","msg":"Start of node method closeAllBrowsers"}
-{"level":30,"time":"2026-03-07T11:03:00.823Z","pid":36735,"hostname":"fedora.fritz.box","msg":"End of node method closeAllBrowsers"}
+node:internal/modules/cjs/loader:1386
+  throw err;
+  ^
+
+Error: Cannot find module '/home/hasanalp/Documents/local_projects/robotframework-browserpom/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Module._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+    at node:internal/main/run_main_module:36:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v22.22.0
