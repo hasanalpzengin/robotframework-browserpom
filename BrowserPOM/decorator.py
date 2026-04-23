@@ -1,8 +1,8 @@
 # ruff: noqa
-from functools import wrapper
+from functools import wraps
 
 def on_error_trigger(method):
-    @wrapper
+    @wraps(method)
     def wrapper(self, *args, **kwargs):
         try:
             return method(self, *args, **kwargs)
