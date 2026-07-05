@@ -71,10 +71,7 @@ class UIObject:
 
         """
         base_locator = str(self).replace("'", '"')
-        locator = BuiltIn().run_keyword(
-            "Playwright Page Method",
-            "locator('" + base_locator + "').filter({" + filter_text + "})",
-        )
+        locator = BuiltIn().run_keyword("Filter Locator", base_locator, filter_text)
         return self.__class__(locator)
 
     def self_locator(self) -> str:

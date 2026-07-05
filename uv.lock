@@ -831,6 +831,42 @@ wheels = [
 ]
 
 [[package]]
+name = "robotframework-browser-batteries"
+version = "19.9.0"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version < '3.10'",
+]
+dependencies = [
+    { name = "robotframework-browser", version = "19.9.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/df/40/ee814183c5934f8e051db4dc2287f2d6cbac6dfc017adece6196fc587122/robotframework_browser_batteries-19.9.0-py3-none-macosx_10_13_universal2.whl", hash = "sha256:1c5a88bf6c4cef92e59de502e5515dfddeb6ea5bbb9a34a080a95c4f91e17487", size = 31645941, upload-time = "2025-10-07T18:51:51.143Z" },
+    { url = "https://files.pythonhosted.org/packages/f5/e9/24cc03eb83d160d50cc10e19edf0b2270a5d70046761bd7ba66d00826f9a/robotframework_browser_batteries-19.9.0-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:6ff76a6f3f217eace4277636eef26cd6474f2312d75f7efcdbed5fd75bd6054d", size = 33920995, upload-time = "2025-10-07T18:51:54.458Z" },
+    { url = "https://files.pythonhosted.org/packages/55/3f/be423f817b4261d9bb0f74729d8b9006ae7388540ceff60728d75eb0d87a/robotframework_browser_batteries-19.9.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ad728ae6f41df0d05ea5144ef840876784c9345e1cc3e1eb2f26fe09c843daba", size = 34201187, upload-time = "2025-10-07T18:51:57.283Z" },
+    { url = "https://files.pythonhosted.org/packages/12/dd/a9f53deeac9f4164400badd440410994539a584e6d8cee0f0e4633910f42/robotframework_browser_batteries-19.9.0-py3-none-manylinux_2_17_x86_64.whl", hash = "sha256:641dca0bb42943097422343a2c84abbc71d7772fe9bb30dd3f8d629fc6328b25", size = 36090312, upload-time = "2025-10-07T18:52:00.845Z" },
+    { url = "https://files.pythonhosted.org/packages/7e/3a/e139d254c76dcaf968b6da2824667e5c6a4834d9c44f2d700a8b9b10a3cc/robotframework_browser_batteries-19.9.0-py3-none-win_amd64.whl", hash = "sha256:a5491b2d13b240b9c43b6ecff0cc4ec1a58e508c448a8b6b56bcc528e7ad4e0d", size = 30558596, upload-time = "2025-10-07T18:52:03.852Z" },
+]
+
+[[package]]
+name = "robotframework-browser-batteries"
+version = "19.14.2"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.10'",
+]
+dependencies = [
+    { name = "robotframework-browser", version = "19.14.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/13/26/eb97381f1d25473f7a173873896cd5aee3cd8f2e87be557ae153b2faa5a4/robotframework_browser_batteries-19.14.2-py3-none-macosx_10_13_universal2.whl", hash = "sha256:8f6c8b93f2985c5986ac0a9ef54ad921aa342c17c5db5edb353874f97171a7d3", size = 34548645, upload-time = "2026-04-06T20:00:45.227Z" },
+    { url = "https://files.pythonhosted.org/packages/0e/3f/1ac40e0de61f83e2d3b6276230f971e447fe6cdf6e2a37feceb4817f508f/robotframework_browser_batteries-19.14.2-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:2df67f6586681d56966ed81b164612f03667a11e903f861869d29f51face0d79", size = 36356890, upload-time = "2026-04-06T20:00:49.809Z" },
+    { url = "https://files.pythonhosted.org/packages/bc/af/95c338a34b585b053d12ef554dacdce106d9e354823a7895d70d3a66471c/robotframework_browser_batteries-19.14.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bf55b962b3815143d341568fa246c5eee462ee23e3a093016089a1d7f7fc9550", size = 38075042, upload-time = "2026-04-06T20:00:54.481Z" },
+    { url = "https://files.pythonhosted.org/packages/a7/6b/41b1b40e56d30e8bbb7cbe9136b49024be9b6ce868ef27913609dd220986/robotframework_browser_batteries-19.14.2-py3-none-manylinux_2_17_x86_64.whl", hash = "sha256:540233fb75ab60f6d26dbd11ea2403bbe3c0511590561c139524ab8f5b795e68", size = 38585731, upload-time = "2026-04-06T20:00:58.745Z" },
+    { url = "https://files.pythonhosted.org/packages/49/a1/b8af7084f2481b3fc26a494cbf456f6e04c71eb614ffabb55ab66e020945/robotframework_browser_batteries-19.14.2-py3-none-win_amd64.whl", hash = "sha256:7f202fb2ed62425b390f1152c185b6b32483160159114e33aa38523d04684760", size = 32882333, upload-time = "2026-04-06T20:01:03.571Z" },
+]
+
+[[package]]
 name = "robotframework-browserpom"
 version = "0.5.2"
 source = { editable = "." }
@@ -851,6 +887,8 @@ test = [
     { name = "pyrefly" },
     { name = "pytest-robotframework", version = "4.4.1.post1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "pytest-robotframework", version = "4.6.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
+    { name = "robotframework-browser-batteries", version = "19.9.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
+    { name = "robotframework-browser-batteries", version = "19.14.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "ruff" },
 ]
 
@@ -869,6 +907,7 @@ test = [
     { name = "prek", specifier = ">=0.2.19" },
     { name = "pyrefly", specifier = ">=0.44.1" },
     { name = "pytest-robotframework", specifier = ">=4.3.0,<5" },
+    { name = "robotframework-browser-batteries", specifier = ">=19.9.0" },
     { name = "ruff", specifier = ">=0.11.0,<0.12" },
 ]
 

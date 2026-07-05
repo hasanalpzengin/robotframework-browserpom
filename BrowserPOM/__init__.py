@@ -121,7 +121,7 @@ class BrowserPOM(Browser):
         Optional arguments are passed to the
         [https://robotframework-browser.org/|BrowserLibrary] constructor.
         """
-        addon_path = Path(__file__).parent / "addons" / "playwright_page_method.js"
+        addon_path = Path(__file__).parent / "addons" / "filter_locator.js"
         with contextlib.suppress(RobotNotRunningError):
             BuiltIn().set_library_search_order("BrowserPOM", "Browser")
 
