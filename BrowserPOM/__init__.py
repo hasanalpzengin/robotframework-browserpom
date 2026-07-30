@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, cast
 
 from Browser import Browser
 from Browser.utils import ScreenshotFileTypes, ScreenshotReturnType
+from robot.api import logger
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
 
@@ -135,7 +136,27 @@ class BrowserPOM(Browser):
         kwargs["jsextension"] = jsextensions
 
         browser_init = cast("Callable[..., None]", super().__init__)
-        browser_init(*args, **kwargs)
+        try:
+            browser_init(*args, **kwargs)
+        except Exception as error:  # noqa: BLE001
+            # Passing a ``jsextension`` makes BrowserLibrary eagerly start the
+            # Playwright Node.js process during ``__init__`` (to register the JS
+            # keywords). When BrowserPOM is only imported so another library or
+            # tool can gather its keywords, that spawn can fail in fork-unsafe
+            # contexts (e.g. grpc already initialised, pabot,
+            # pytest_robotframework), raising errors such as
+            # "TypeError: 'NoneType' object is not callable" from subprocess.
+            # Fall back to a plain init so keyword gathering does not crash the
+            # importing library.
+            logger.warn(
+                "BrowserPOM: failed to load the 'filter_locator' jsextension "
+                f"during import ({error}). The library was initialised without "
+                "it so keyword gathering can continue.",
+            )
+            kwargs["jsextension"] = [
+                extension for extension in jsextensions if extension != str(addon_path)
+            ] or None
+            browser_init(*args, **kwargs)
 
     @keyword
     def take_screenshot(self, *args, **kwargs):  # noqa:ANN002,ANN003,ANN201
