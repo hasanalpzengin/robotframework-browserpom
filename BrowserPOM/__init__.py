@@ -153,9 +153,7 @@ class BrowserPOM(Browser):
                 f"during import ({error}). The library was initialised without "
                 "it so keyword gathering can continue.",
             )
-            kwargs["jsextension"] = [
-                extension for extension in jsextensions if extension != str(addon_path)
-            ] or None
+            kwargs["jsextension"] = [extension for extension in jsextensions if extension != str(addon_path)] or None
             browser_init(*args, **kwargs)
 
     @keyword
