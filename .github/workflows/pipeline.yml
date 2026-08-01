@@ -39,6 +39,7 @@ jobs:
 
   publish-docs:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.head.repo.fork }}
     permissions:
       contents: read
       pages: write
