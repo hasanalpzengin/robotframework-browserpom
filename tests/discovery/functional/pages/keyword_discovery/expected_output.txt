@@ -1,0 +1,9 @@
+MyPage: MyPage.py
+  PAGE_URL: /
+  Children: None
+  Properties: None
+  Keywords:
+    Enter Value(value, timeout)
+    Get Title() -> str
+    Do Action Annotated None()
+    Do Action Unannotated()

@@ -1,0 +1,6 @@
+MyPage: MyPage.py
+  Children:
+    section: Section
+  Properties:
+    title
+  Keywords: None

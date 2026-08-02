@@ -1,0 +1,17 @@
+# /tests/discovery/functional/ruff.toml
+# inherit all settings from the main file
+extend = "../../ruff.toml"
+[lint]
+ignore = [
+  "INP001", # https://github.com/astral-sh/ruff/issues/6474#issuecomment-2900831858
+  "D100",
+  "D101",
+  "D107",
+  "ANN001",
+  "ANN201",
+  "ANN202",
+  "ANN204",
+  "ARG001",
+  "D104", # fixture packages intentionally have no docstring
+  "TID252", # relative-import-resolution fixtures intentionally use relative imports
+]

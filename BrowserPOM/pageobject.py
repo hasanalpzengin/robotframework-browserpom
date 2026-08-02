@@ -62,7 +62,7 @@ class PageObject:
         heading or element on the page.
 
         """
-        actual_title = self.browser.get_title()
+        actual_title = cast("str", self.browser.get_title())
         expected_title = self.PAGE_TITLE
 
         if actual_title.lower() == expected_title.lower():
@@ -101,8 +101,8 @@ class PageObject:
         Tags: selenium, page-object
 
         """
-        url = page_root if page_root is not None else self.browser.get_url()
-        (scheme, netloc, _, _, _, _) = urlparse(url)
+        url = page_root if page_root is not None else cast("str", self.browser.get_url())
+        scheme, netloc, _, _, _, _ = urlparse(url)
         url = f"{scheme}://{netloc}{self.PAGE_URL}"
 
         self.browser.go_to(url)

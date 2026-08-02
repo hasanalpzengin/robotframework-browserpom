@@ -58,7 +58,7 @@ class UIObject:
             return self.filter(f"hasText: '{index}'")
         raise TypeError("Index must be an int or a str.")
 
-    def filter(self, filter_text: str) -> UIObject:
+    def filter(self, filter_text: str) -> Self:
         """Filters the UI object by a given filter.
 
         See: https://playwright.dev/docs/locators#filtering-locators for more details

@@ -1,0 +1,38 @@
+DeepChild: app/component/deep/deep_child.py
+  Children:
+    shared_child: SharedBase("css=.deep-shared-child")
+      marker: UIObject("css=.shared-marker")
+  Properties: None
+  Methods: None
+
+DirectBase: app/__init__.py
+  Children: None
+  Properties: None
+  Methods: None
+
+DirectChild: app/direct_child.py
+  Children: None
+  Properties: None
+  Methods: None
+
+OtherBase: app/other/decoy.py
+  Children:
+    decoy_marker: UIObject("css=.decoy")
+  Properties: None
+  Methods: None
+
+SharedBase: app/component/shared/base.py
+  Children:
+    marker: UIObject("css=.shared-marker")
+  Properties: None
+  Methods: None
+
+SubBase: app/subpkg/__init__.py
+  Children: None
+  Properties: None
+  Methods: None
+
+SubpkgChild: app/subpkg_child.py
+  Children: None
+  Properties: None
+  Methods: None

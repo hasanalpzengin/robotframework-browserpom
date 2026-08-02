@@ -1,0 +1,9 @@
+MyPage: MyPage.py
+  PAGE_URL: /
+  Children:
+    section: Section
+      inner: UIObject
+    status: UIObject
+    body: UIObject
+  Properties: None
+  Keywords: None

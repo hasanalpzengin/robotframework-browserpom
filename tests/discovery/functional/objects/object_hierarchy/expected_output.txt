@@ -1,0 +1,26 @@
+BaseComponent: BaseComponent.py
+  Children: None
+  Properties: None
+  Methods: None
+
+Branch: Branch.py
+  Children:
+    header: UIObject("css=.header")
+    leaf: Leaf("css=.leaf")
+      label: UIObject("css=.label")
+    twig: Twig("css=.twig")
+      tip: UIObject("css=.tip")
+  Properties: None
+  Methods: None
+
+Leaf: Leaf.py
+  Children:
+    label: UIObject("css=.label")
+  Properties: None
+  Methods: None
+
+Twig: Twig.py
+  Children:
+    tip: UIObject("css=.tip")
+  Properties: None
+  Methods: None

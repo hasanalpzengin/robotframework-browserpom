@@ -1,0 +1,8 @@
+# /tests/ruff.toml
+# inherit all settings from the main file
+extend = "../pyproject.toml"
+[lint]
+ignore = [
+  "INP001", # https://github.com/astral-sh/ruff/issues/6474#issuecomment-2900831858
+  "CPY001", # https://github.com/astral-sh/ruff/issues/6474#issuecomment-2900831858
+]
