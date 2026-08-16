@@ -80,3 +80,6 @@ exclude = [
     ".venv",
     "env"
 ]
+
+[tool.pyrefly]
+project-includes = ["BrowserPOM"]
