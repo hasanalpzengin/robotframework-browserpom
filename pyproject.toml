@@ -21,10 +21,14 @@ dependencies = [
 ]
 repository = "https://github.com/hasanalpzengin/robotframework-browserpom"
 
+[project.scripts]
+browserpom = "BrowserPOM.cli:main"
+
 [dependency-groups]
 test = [
     "prek>=0.2.19",
     "pyrefly>=1.1.1",
+    "pytest>=8.4.2",
     "pytest_robotframework>=4.3.0,<5",
     "ruff>=0.11.0,<0.12",
     "robotframework-browser-batteries>=19.9.0",
@@ -76,3 +80,6 @@ exclude = [
     ".venv",
     "env"
 ]
+
+[tool.pyrefly]
+project-includes = ["BrowserPOM"]

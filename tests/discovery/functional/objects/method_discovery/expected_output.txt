@@ -1,0 +1,9 @@
+Widget: Widget.py
+  Children: None
+  Properties: None
+  Methods:
+    click_that_should_be_included(times)
+    click_that_should_show_params_in_declared_order(a, b, c, d)
+    other_decorator_method_that_should_be_included()
+    uncalled_decorator_method_that_should_be_included()
+    submit_that_should_show_keyword_only_param(value, timeout)

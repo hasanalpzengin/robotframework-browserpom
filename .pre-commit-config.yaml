@@ -16,3 +16,4 @@ repos:
       additional_dependencies:
         - robotframework
         - robotframework-browser
+        - pytest

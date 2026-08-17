@@ -1,0 +1,5 @@
+Widget: Widget.py
+  Children: None
+  Properties:
+    title
+  Methods: None
