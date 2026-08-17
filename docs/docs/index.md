@@ -41,4 +41,4 @@ A Page Object Model extension for [Robot Framework Browser](https://robotframewo
    ```
 
 ---
-For more details, see the [Usage](/usage) and [Examples](/examples) sections.
+For more details, see the [Usage](/usage), [Examples](/examples), and [LLM Integration](/llm-integration) sections.
