@@ -7,6 +7,10 @@ description: Create and use robotframework-browserpom PageObjects and UIObjects 
 
 Use this skill when creating, modifying, or consuming Python PageObjects and UIObjects with Robot Framework Browser.
 
+## CLI Discovery
+
+Before choosing or reusing an existing PageObject or UIObject, use the companion "browserpom-cli" skill to discover available classes in the project. The CLI reads the `pyproject.toml` configuration and outputs class names, source paths, and public methods for each existing PageObject or UIObject.
+
 ## Create A PageObject
 
 1. Define a Python class that inherits from `PageObject`.
