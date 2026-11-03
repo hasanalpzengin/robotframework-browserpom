@@ -40,6 +40,10 @@ class UIObject:
         """
         return cast("Browser", BuiltIn().get_library_instance("BrowserPOM"))
 
+    def __contains__(self, item: object) -> bool:
+        """Reject membership tests without falling back to indexed iteration."""
+        raise TypeError(f"'{type(self).__name__}' object does not support membership tests")
+
     def __getitem__(self, index: int | str) -> Self:
         """Retrieves an indexed or text-based child UI object.
 
