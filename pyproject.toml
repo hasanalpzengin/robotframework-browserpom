@@ -3,7 +3,7 @@ name = "robotframework-browserpom"
 version = "0.6.1"
 description = "robotframework-browser library extension to create Page Objects"
 authors = [{ name = "Hasan Alp Zengin", email = "hasanalpzengin@gmail.com" }]
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.10,<4.0"
 readme = "readme.md"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -31,7 +31,7 @@ test = [
     "pytest>=8.4.2",
     "pytest_robotframework>=4.3.0,<5",
     "ruff>=0.11.0,<0.12",
-    "robotframework-browser-batteries>=19.9.0",
+    "robotframework-browser-batteries==20.1.0",
 ]
 dev = [
     "hatchling",
