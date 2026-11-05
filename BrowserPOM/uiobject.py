@@ -7,6 +7,8 @@ from typing import TYPE_CHECKING, Self, cast
 from robot.libraries.BuiltIn import BuiltIn
 
 if TYPE_CHECKING:
+    from collections.abc import Iterator
+
     from Browser import Browser
 
 
@@ -61,6 +63,17 @@ class UIObject:
             # handle text directly as an appended locator
             return self.filter(f"hasText: '{index}'")
         raise TypeError("Index must be an int or a str.")
+
+    def __iter__(self) -> Iterator[Self]:
+        """Yield indexed UIObjects for the matches present when iteration begins.
+
+        Count matches once using the complete locator, including parents. Each
+        result behaves like integer indexing: its locator follows the current
+        position if the DOM changes. A new iteration queries the count again.
+        """
+        count = self.browser.get_element_count(str(self))
+        for index in range(count):
+            yield self[index]
 
     def filter(self, filter_text: str) -> Self:
         """Filters the UI object by a given filter.
