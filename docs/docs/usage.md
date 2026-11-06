@@ -95,6 +95,32 @@ class Tile(UIObject):
 - **By text:** `${MainPage.content_area.tile["Experiences of Test Automation"].title}`
 - **By filter:** `${MainPage.content_area.tile.filter("hasText: 'Experiences of Test Automation'").title}`
 
+### Iterating over matches
+
+Iterate over a UIObject to get one UIObject per matching element, in locator order.
+Each result has the same concrete class and parent as integer indexing, so custom
+methods and nested UIObject attributes remain available.
+
+In Python methods running within a Robot test:
+
+```python
+for tile in self.content_area.tile:
+    title = self.browser.get_text(str(tile.title))
+```
+
+In Robot Framework, expand the UIObject as a list:
+
+```robotframework
+FOR    ${tile}    IN    @{MainPage.content_area.tile}
+    Get Text    ${tile.title}
+END
+```
+
+Iteration uses the Robot-managed BrowserPOM connection and counts matches once
+when iteration begins. No matches produce an empty loop. Each new iteration
+queries the count again. Results use positional locators like `tile[0]`, so if
+the DOM changes during a loop, a position can refer to a different element.
+
 ## 3. Chained/Nested Locators
 The string representation of a UIObject automatically builds a full locator chain. Remember to wrap the UIObject in `str()` to get the selector string.
 ```text
