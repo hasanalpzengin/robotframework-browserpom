@@ -110,7 +110,7 @@ for tile in self.content_area.tile:
 
 In Robot Framework, expand the UIObject as a list:
 
-```robotframework
+```text
 FOR    ${tile}    IN    @{MainPage.content_area.tile}
     Get Text    ${tile.title}
 END
